@@ -1,0 +1,350 @@
+/* ================== UNIVERSAL STYLES ================== */
+/* Apply box-sizing to all elements for consistent sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* Set default body styles */
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+
+    /* Full-page background image */
+    background: url('spa-images/spaherobackground3.jpeg') no-repeat center center fixed;
+    background-size: cover; /* cover entire screen */
+    background-attachment: fixed; /* optional: background stays while scrolling */
+    color: #fff; /* default text color on top of background */
+}
+
+/* Optional: add overlay to darken background for readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); /* dark overlay to make text pop */
+    z-index: 0; /* behind all content */
+}
+
+
+/* ================== TOP NAVIGATION BAR ================== */
+/* Main nav container */
+nav {
+    color: white;
+    display: flex; /* Flex layout: logo left, buttons right */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: absolute; /* Overlay nav on top of hero */
+    width: 100%;
+    top: 0;
+    z-index: 10; /* Keep nav above hero */
+}
+
+/* ================== LOGO ================== */
+/* Logo image styling */
+.logo-section img {
+    width: 120px; 
+    height: 130px;
+    display: block;
+}
+
+/* ================== NAVIGATION CONTROLS ================== */
+/* Container for buttons and hamburger */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between buttons */
+}
+
+/* Hamburger menu toggle */
+.menu-toggle {
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s;
+}
+.menu-toggle:hover {
+    color: #c4bebe;
+}
+
+/* Reserve button */
+.reserve-btn {
+    background-color: #eeece6; 
+    color: #070707;
+    border: none;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background 0.3s, transform 0.2s;
+}
+.reserve-btn:hover {
+    color: white;
+    background-color: #4d0505;
+    transform: scale(1.05);
+}
+
+/* ================== OVERLAY NAVIGATION (FULLSCREEN MENU) ================== */
+/* Fullscreen menu container */
+.overlay {
+    color: #080808;
+    height: 100%;
+    width: 0; /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgba(54, 3, 3, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+/* Content inside overlay */
+.overlay-content {
+    position: relative;
+    top: 25%; /* Vertically center links */
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Overlay links */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(255, 254, 254, 0.747);
+    display: block;
+    transition: 0.3s;
+}
+.overlay a:hover {
+    color: rgb(99, 94, 94);
+}
+
+/* Close button for overlay */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    font-weight: 900;
+}
+
+/* ================== DROPDOWN MENU ================== */
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+/* Dropdown button */
+.dropbtn {
+    color: #818181;
+    font-size: 36px;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+}
+
+/* Dropdown content container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #cab9b9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(138, 117, 117, 0.2);
+    z-index: 1;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+    color: rgba(41, 38, 38, 0.8);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color: #5f5454;
+    color: white;
+    font-size: large;
+}
+
+/* Show dropdown */
+.dropdown-content.show {
+    display: block;
+}
+
+/* ================== RESPONSIVE ADJUSTMENTS ================== */
+@media screen and (max-height: 450px) {
+    .overlay a { font-size: 20px; }
+    .overlay .closebtn { font-size: 40px; top: 15px; right: 35px; }
+}
+
+/* ================== HERO SECTION ================== */
+/* Main hero container */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0c27c; /* fallback background */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Gradient layer between background and hero image */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgb(94, 39, 27) 50%
+    );
+    z-index: 1; /* below image */
+}
+
+/* Hero image on top of gradient */
+.hero-img {
+    margin-top: 12px;
+    position: relative;
+    height: 100%;
+    width: 950px;
+    object-fit: cover;
+    object-position: left center;
+
+    /* Smooth fade on right to blend with gradient */
+    mask-image: linear-gradient(to right, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
+
+    z-index: 2;
+}
+
+/* Overlay to darken image for text readability */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0,0,0,0.4); */
+    z-index: 3; /* above image and gradient */
+    pointer-events: none; /* overlay won't block clicks */
+}
+
+/* Hero text content */
+.hero-content {
+    margin-top: 80px;
+    position: relative;
+    z-index: 4; /* on top of all layers */
+    margin-left: 50px;
+    text-align: left;
+    color: white;
+}
+
+.hero-content h4 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.hero-content h1 {
+    text-align: center;
+    font-size: 5rem;
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Responsive hero text */
+@media screen and (max-width: 768px) {
+    .hero-content h4 { font-size: 1rem; }
+    .hero-content h1 { font-size: 2.5rem; }
+    nav { padding: 10px 20px; }
+}
+
+/* ================== SECTION 1 STYLING ================== */
+.section-1 {
+    position: relative;               
+    z-index: 2;                       
+    max-width: 1000px;                
+    margin: 50px auto;                
+    padding: 40px 40px;               
+    background: rgba(255, 248, 240, 0.85); 
+    border-radius: 15px;              
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    color: #3a1f0b;                   
+    line-height: 1.8;                 
+    font-family: 'Times New Roman', serif; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for the whole section */
+.section-1:hover {
+    background-color: #924827;        /* warm brown on hover */
+    color: whitesmoke;                 /* light text for contrast */
+    transform: translateY(-5px);       /* lift slightly */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Headline styling */
+.section-1 h1 {
+    font-size: 3rem;                  
+    font-weight: 700;
+    text-align: center;               
+    margin-bottom: 25px;
+    color: inherit;                     /* inherit color for hover effect */
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+/* Main paragraph styling */
+.section-1 p {
+    font-size: 1.4rem;                
+    text-align: justify;              
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+/* Subtext / small headline styling */
+.section-1 h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 30px;
+    color: inherit;                   /* inherit color for hover effect */
+    font-style: italic;               
+    transition: color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .section-1 {
+        padding: 30px 20px;
+        margin: 30px 20px;
+    }
+    .section-1 h1 {
+        font-size: 2rem;
+    }
+    .section-1 p {
+        font-size: 1rem;
+    }
+    .section-1 h5 {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Spa Website</title>
+  </head>
+
+  <body>
+
+    <!-- HERO SECTION -->
+<div class="hero">
+    <!-- Hero image -->
+    <img src="spa-images/HERO-SAUNAIMAGE.png" alt="Spa Hero Image" class="hero-img">
+
+    <!-- Dark overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero text -->
+    <div class="hero-content">
+        <h4>Unwind • Renew • Heal</h4>
+        <h1>Find Your Peace</h1>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo-section">
+        <img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="Spa Logo" />
+    </div>
+
+    <div class="nav-controls">
+        <button class="reserve-btn">Reserve</button>
+        <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+    </div>
+
+    <!-- Overlay Menu -->
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="#"><img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="spa logo" style="height: 120px; width: 110px;"></a>
+            <a href="#">About</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Spa Menu</a>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">Massages</a>
+                    <a href="#">Facial Treatments</a>
+                    <a href="#">Body Scrubs</a>
+                    <a href="#">Waxing Services</a>
+                </div>
+            </div>
+            <a href="#">Special Packages</a>
+            <a href="#">Memberships</a>
+            <a href="#">Steam & Bath Therapy</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================= Section 1 ============================= -->
+<section class="section-1">
+    <h1>Give yourself a moment.</h1>
+    <p>At Herad Spa, our intentional, nature-based rituals use a gentle touch and pure, earth-grown oils to help you release tension and restore your inner peace and calm.</p>
+    <!-- <p>Life moves fast, and we believe in the quiet power of slowing down. Our practices are deliberate, designed to unburden your spirit and awaken your body's natural state of rest. From the first inhale of our botanical oils to the last gentle touch, every detail is crafted to help you surrender to the moment and let go of the outside world.</p> -->
+    <h5>Simply arrive. We'll handle everything else.</h5>
+</section>
+
+<!-- ===================== section 2 with 3 grids ============================ -->
+
+
+
+
+    <!-- JS for overlay menu -->
+    <script>
+      function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+        document.body.style.overflow = "hidden";
+      }
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+        document.body.style.overflow = "";
+      }
+      function toggleDropdown(event) {
+        event.preventDefault();
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      window.addEventListener("click", function (e) {
+        if (!e.target.matches(".dropbtn")) {
+          document.querySelectorAll(".dropdown-content").forEach(function (menu) {
+            menu.classList.remove("show");
+          });
+        }
+      });
+    </script>
+    <!-- end of navbar script -->
+     
+  </body>
+</html>

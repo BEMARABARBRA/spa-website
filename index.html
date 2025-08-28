@@ -1,98 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
-    <title>Spa Website</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <title>Spa Website</title>
+</head>
 
-  <body>
+<body>
 
-    <!-- HERO SECTION -->
-<div class="hero">
-    <!-- Hero image -->
+  <!-- HERO SECTION -->
+  <div class="hero">
     <img src="spa-images/HERO-SAUNAIMAGE.png" alt="Spa Hero Image" class="hero-img">
-
-    <!-- Dark overlay -->
     <div class="hero-overlay"></div>
-
-    <!-- Hero text -->
     <div class="hero-content">
-        <h4>Unwind • Renew • Heal</h4>
-        <h1>Find Your Peace</h1>
+      <h4>Unwind • Renew • Heal</h4>
+      <h1>Find Your Peace</h1>
     </div>
-</div>
+  </div>
 
-<!-- NAVBAR -->
-<nav>
+  <!-- NAVBAR -->
+  <nav>
     <div class="logo-section">
+      <a href="index.html">
         <img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="Spa Logo" />
+      </a>
     </div>
-
     <div class="nav-controls">
-        <button class="reserve-btn">Reserve</button>
-        <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+      <button class="reserve-btn">Reserve</button>
+      <span class="menu-toggle" onclick="openNav()">&#9776;</span>
     </div>
+  </nav>
+  
 
     <!-- Overlay Menu -->
     <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-            <a href="#"><img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="spa logo" style="height: 120px; width: 110px;"></a>
-            <a href="#">About</a>
-            <div class="dropdown">
-                <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Spa Menu</a>
-                <div class="dropdown-content" id="myDropdown">
-                    <a href="#">Massages</a>
-                    <a href="#">Facial Treatments</a>
-                    <a href="#">Body Scrubs</a>
-                    <a href="#">Waxing Services</a>
-                </div>
-            </div>
-            <a href="#">Special Packages</a>
-            <a href="#">Memberships</a>
-            <a href="#">Steam & Bath Therapy</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="#"><img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="spa logo" style="height: 120px; width: 110px;"></a>
+        <a href="#">About</a>
+        <div class="dropdown">
+          <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Spa Menu</a>
+          <div class="dropdown-content" id="myDropdown">
+            <a href="#">Massages</a>
+            <a href="#">Facial Treatments</a>
+            <a href="#">Body Scrubs</a>
+            <a href="#">Waxing Services</a>
+          </div>
         </div>
+        <a href="#">Special Packages</a>
+        <a href="#">Memberships</a>
+        <a href="#">Steam & Bath Therapy</a>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<!-- ============================= Section 1 ============================= -->
-<section class="section-1">
+  <!-- SECTION 1 -->
+  <section class="section-1">
     <h1>Give yourself a moment.</h1>
     <p>At Herad Spa, our intentional, nature-based rituals use a gentle touch and pure, earth-grown oils to help you release tension and restore your inner peace and calm.</p>
-    <!-- <p>Life moves fast, and we believe in the quiet power of slowing down. Our practices are deliberate, designed to unburden your spirit and awaken your body's natural state of rest. From the first inhale of our botanical oils to the last gentle touch, every detail is crafted to help you surrender to the moment and let go of the outside world.</p> -->
     <h5>Simply arrive. We'll handle everything else.</h5>
+  </section>
+
+  <!-- SECTION 2: GRID CARDS -->
+  <section>
+    <div class="section-2">
+      <div class="grid-item">
+        <img src="spa-images/redtherapyspa.jpeg" alt="Massage Image" />
+        <h3>Red-Light Therapeutic Therapies</h3>
+        <p>Experience the combined power of red-light therapeutic therapies for rapid muscle recovery and profound stress relief. Discover a new level of well-being. Book your session today.</p>
+      </div>
+
+      <div class="grid-item">
+        <img src="spa-images/lymphaticmassage1.jpeg" alt="Facial Treatments Image" />
+        <h3>Lymphatic Drainage Massages</h3>
+        <p>Lymphatic drainage massage isn't a luxury, it's essential body maintenance. Helps flush toxins, reduce inflammation, and support recovery.</p>
+      </div>
+
+      <div class="grid-item">
+        <img src="spa-images/facial-treatment.jpeg" alt="Body Scrubs Image" />
+        <h3>Facial Treatments</h3>
+        <p>Unlock a youthful, radiant glow with a custom facial. Deeply nourish your skin and target fine lines, dullness, and signs of aging.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: GRID CARDS -->
+  <section>
+    <div class="section-3">
+      <div class="grid-item">
+        <img src="spa-images/bodyscrubs.jpeg" alt="Massage Image" />
+        <h3>Body-Scrubs</h3>
+        <p>Scrub dullness away and glow on! Our body scrubs smooth, refresh, and brighten for a radiant you.</p>
+      </div>
+
+      <div class="grid-item">
+        <img src="spa-images/bodywraps.jpeg" alt="Facial Treatments Image" />
+        <h3>Body-Wraps</h3>
+        <p>Detox and hydrate! Our body wraps boost circulation, firm skin, and leave you feeling refreshed and renewed.</p>
+      </div>
+
+      <div class="grid-item">
+        <img src="spa-images/waxingservices.jpeg" alt="Body Scrubs Image" />
+        <h3>Waxing Treatments</h3>
+        <p>Goodbye razors, hello smooth! Enjoy weeks of flawless, soft skin with expert waxing.</p>
+      </div>
+    </div>
+    </section>
+
+<!-- -------------------- section 4 --------------------- -->
+<section>
+  <div class="section-4">
+    <h1><i>Dive into pure bliss and let the spa vibes take over.</i></h1>
+
+    <!-- Buttons container -->
+    <div class="section-4-buttons">
+      <button>
+        <a href="#" style="text-decoration: none; color: white;">Gallery Vibes</a>
+      </button>
+
+      <button>
+        <a href="#" style="text-decoration: none; color: white;">Spa Shop</a>
+      </button>
+    </div>
+  </div>
 </section>
 
-<!-- ===================== section 2 with 3 grids ============================ -->
+
+<footer>
+  <div class="row">
+
+    <!-- Logo container -->
+    <div class="col logo-col">
+        <a href="index.html"> <!-- clickable logo linking to About page -->
+            <img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="Spa Logo" 
+            style="height: 130px; width: 110px;">
+        </a>
+    </div>
+
+    <!-- Links column -->
+    <div class="col">
+        <a href="#">About Us</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <!-- Contact column -->
+    <div class="col">
+        <a href="#">Whatsapp: +256 753 044293</a>
+        <a href="#">Email: barbarabemara@gmail.com</a>
+        <p>HOURS: Mon-Sun (9:00am - 8:00pm)</p>
+    </div>
+
+    <!-- Policy column -->
+    <div class="col">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Cancellation Policy</a>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Herad Spa. All rights reserved.</p>
+  </div>
+</footer>
 
 
 
 
-    <!-- JS for overlay menu -->
-    <script>
-      function openNav() {
-        document.getElementById("myNav").style.width = "100%";
-        document.body.style.overflow = "hidden";
+
+
+  <!-- ============================== JS ============================ -->
+
+  <script>
+    // ================= Overlay Menu =================
+    function openNav() {
+      document.getElementById("myNav").style.width = "100%";
+      document.body.style.overflow = "hidden";
+    }
+  
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+      document.body.style.overflow = "";
+    }
+  
+    function toggleDropdown(event) {
+      event.preventDefault();
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+  
+    window.addEventListener("click", function(e) {
+      if (!e.target.matches(".dropbtn")) {
+        document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
       }
-      function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
-        document.body.style.overflow = "";
-      }
-      function toggleDropdown(event) {
-        event.preventDefault();
-        document.getElementById("myDropdown").classList.toggle("show");
-      }
-      window.addEventListener("click", function (e) {
-        if (!e.target.matches(".dropbtn")) {
-          document.querySelectorAll(".dropdown-content").forEach(function (menu) {
-            menu.classList.remove("show");
-          });
+    });
+  
+
+    
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) { // adjust 50px as the scroll threshold
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
         }
-      });
-    </script>
-    <!-- end of navbar script -->
-     
-  </body>
+    });
+
+
+    
+    // ================= Section 2 Grid Logic =================
+const gridItems = document.querySelectorAll(".section-2 .grid-item");
+
+// Intersection Observer for scroll-triggered animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible"); // triggers fade/slide in
+      observer.unobserve(entry.target); // stop observing once visible
+    }
+  });
+}, { threshold: 0.2 });
+
+// Observe all grid items
+gridItems.forEach(item => observer.observe(item));
+
+// Optional: staggered animation on page load for dramatic effect
+window.addEventListener("DOMContentLoaded", () => {
+  gridItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.classList.add("visible"); // fade/slide in
+    }, index * 150); // stagger each item
+  });
+});
+
+// Hover effects: fully handled in CSS for instant dramatic lift/zoom/glow
+
+
+// Make text move from right to left based on scroll
+// Select the paragraph inside section 4
+const section4 = document.querySelector('.section-4');
+  const paragraph = section4.querySelector('p');
+
+  window.addEventListener('scroll', () => {
+      const sectionTop = section4.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      // Check if section is in viewport
+      if(sectionTop < windowHeight && sectionTop > 0) {
+          // Map scroll position to translateX value
+          const progress = 1 - (sectionTop / windowHeight);
+          const maxTranslate = -window.innerWidth / 2; // how far it moves
+          paragraph.style.transform = `translateX(${maxTranslate * progress}px)`;
+      }
+  });
+
+  </script>
+  
+
+
+</body>
 </html>

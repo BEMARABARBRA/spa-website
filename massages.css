@@ -171,9 +171,7 @@ body::before {
 }
 
   
-  /* =======================================================
-     MASSAGE COMPLEMENTARIES SECTION
-     ======================================================= */
+  /* ===================== MASSAGE COMPLEMENTARIES SECTION =========================== */
      .complementaries {
         text-align: center;
         margin-top: 120px;
@@ -279,6 +277,82 @@ body::before {
   font-size: 1.1rem;
   color: #2E1A0F;
 }
+
+
+/* ================== Couples Massage Styling ================== */
+.couples-massage {
+  align-items: center;
+  margin-left: 150px;
+  margin-top: 120px;
+  border-right: 10px solid #4B0606;      
+  border-left: 13px solid #800505;       
+  max-width: 850px;                       
+  /* margin: 40px auto;                       */
+  padding: 30px 45px;                     
+  background-color: rgba(255, 255, 255, 0.5); 
+  border-radius: 20px;                    
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);  
+  text-align: center;                     
+  font-family: 'Times New Roman', Times, serif; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Hover effect */
+.couples-massage:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(197, 191, 191, 0.2);
+}
+
+/* Heading styling */
+.couples-massage h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #6b1010;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+/* Subtitle / Italic text */
+.couples-massage p i {
+  display: block;
+  font-size: 1.2rem;
+  color: #8a1414;
+  margin-bottom: 15px;
+}
+
+/* Description text */
+.couples-massage p:not(:first-of-type):not(:last-of-type) {
+  font-size: 1rem;
+  color: #361c0b;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Duration and Price styling */
+.couples-massage p:last-of-type {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2E1A0F;
+}
+
+/* Reserve Button (reuse same style as Signature) */
+.couples-massage .btn-reserve {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #853E21, #6A2716);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.couples-massage .btn-reserve:hover {
+  background: linear-gradient(135deg, #6A2716, #853E21);
+  transform: scale(1.05);
+}
+
 
 
   /* =======================================================

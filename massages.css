@@ -47,16 +47,9 @@ body::before {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    /* background: rgba(0,0,0,0.3); */
     z-index: 0;
 }
-
-/* Ensure page content is above overlay */
-body * {
-    position: relative;
-    z-index: 1;
-}
-
 
   
   .container {
@@ -115,48 +108,98 @@ body * {
   /* =======================================================
      SECTION 1 – CLOSE BUTTON AREA
      ======================================================= */
-  .section-1 {
-    align-items: right;
-    position: relative;
-    z-index: 2;
-    width: 40%;
-    max-width: 1000px;
-    margin: 50px auto 20px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  }
-  
+  /* ================== Close Button Styling ================== */
+.btn-close {
+  position: fixed;          /* Stay in top-right even when scrolling */
+  top: 20px;                /* Distance from top */
+  right: 20px;              /* Distance from right */
+  padding: 15px 25px;        /* Small but clickable */
+  background-color: #5e0f0f; /* Deep brown */
+  color: #fff;              /* White text for contrast */
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-decoration: none;    /* Remove underline */
+  border-radius: 8px;       /* Rounded edges */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;            /* Stay on top */
+}
+
+/* Hover effect */
+.btn-close:hover {
+  background-color: #922727c4; /* Darker brown */
+  transform: scale(1.05);     /* Slight zoom */
+}
+
+.btn-close {
+  background-color: rgba(94, 15, 15, 0.8);
+  color: #fff;
+}
+
+.btn-close:hover {
+  background-color: rgba(146, 39, 39, 0.9);
+}
+
+  /* ================== Reserve Button Styling ================== */
+.btn-reserve {
+  position: absolute;           /* Position relative to the massage card */
+  bottom: 15px;                 /* 15px from bottom of card */
+  right: 15px;                  /* 15px from right of card */
+  padding: 8px 16px;            /* Comfortable padding */
+  background-color: #960B0B;    /* Deep brown to match spa theme */
+  color: #fff;                  /* White text */
+  font-weight: bolder;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.btn-reserve:hover {
+  background-color: #501202;
+  transform: scale(1.05);
+}
+
+/* Make the massage card relative to allow absolute positioning */
+.massage-item {
+  position: relative;
+}
+.signature-massage {
+  position: relative;
+}
+
   
   /* =======================================================
      MASSAGE COMPLEMENTARIES SECTION
      ======================================================= */
      .complementaries {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 120px;
         font-size: 18px;
         color: #4b0606;
-        padding: 40px 20px;
-        /* Transparent background with slight opacity for readability */
-        background: rgba(255, 255, 255, 0.1); /* almost fully transparent */
-        border-radius: 20px;
+        padding: 40px 30px;
+        /*Transparentbackgroundwithslightopacityforreadability*/background: rgba(255, 255, 255, 0.1);
+        /*almostfullytransparent*/border-radius: 0px;
         margin-bottom: 40px;
-    
-        /* Optional: subtle backdrop blur for elegance */
-        backdrop-filter: blur(5px);
+        /*Optional:;
+        subtlebackdropblurforelegance*/backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-    
-        /* Optional: add light border to distinguish section */
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+        /*Optional:;
+        addlightbordertodistinguishsection*/border: 1px solid rgba(255, 255, 255, 0.2);
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+}
     
   
   .complementaries h3 {
     text-align: center;
-    text-shadow: 1px 1px 2px rgb(202, 195, 195);
+    text-shadow: 2px 2px 2px rgb(32, 2, 2);
     font-size: 40px;
-    color: #6a2716;
+    color: #d8cecb;
     margin-bottom: 25px;
   }
   
@@ -180,7 +223,63 @@ body * {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(14, 12, 12, 0.15);
   }
+
+
+    /* ================== Signature Massage Styling ================== */
+    .signature-massage {
+      border-right: 10px solid #4B0606;      /* Right border: 10px thick, dark red-brown, solid style */
+      border-left: 13px solid #800505;       /* Left border: 13px thick, slightly brighter red-brown */
+      max-width: 850px;                       /* Limit the block width for readability */
+      margin: 40px auto;                      /* Center the block horizontally with vertical spacing */
+      padding: 30px 45px;                     /* Space inside the box for comfortable content layout */
+      background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background (50% opacity) */
+      border-radius: 20px;                    /* Rounded corners for a soft, elegant look */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);  /* Subtle shadow for depth and 3D effect */
+      text-align: center;                     /* Center all text inside the block */
+      font-family: 'Times New Roman', Times, serif; /* Elegant serif font for spa theme */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for hover effects (if added) */
+    }
     
+    
+
+/* Hover effect for interactivity */
+.signature-massage:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(197, 191, 191, 0.2);
+}
+
+/* Heading styling */
+.signature-massage h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #6b1010;                 /* Dark brown for contrast */
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+/* Subtitle / Italic text */
+.signature-massage p i {
+  display: block;
+  font-size: 1.2rem;
+  color: #8a1414;                 /* Complementary brown */
+  margin-bottom: 15px;
+}
+
+/* Description text */
+.signature-massage p:not(:first-of-type):not(:last-of-type) {
+  font-size: 1rem;
+  color: #361c0b;                 /* Darker brown for readability */
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Duration and Price styling */
+.signature-massage p:last-of-type {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2E1A0F;
+}
+
 
   /* =======================================================
      MASSAGE SECTIONS (SIGNATURE, RELAXING, THERAPEUTIC, QUICK-FIX)
@@ -190,7 +289,7 @@ body * {
   .therapeutic-massages,
   .quick-fix-massages,
   .mothers {
-    margin-top: 200px;
+    margin-top: 120px;
     padding: 50px 20px;
     margin-bottom: 40px;
     border-radius: 20px;
@@ -216,7 +315,9 @@ body * {
 
   
   .massage-item {
-    background: #796565;
+    border-right: 10px solid #960b0b;
+    border-left: 10px solid #960b0b;
+    background: #c5aeae;
     padding-left: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -236,9 +337,9 @@ body * {
   .therapeutic-massages h1,
   .quick-fix-massages h1,
   .mothers h1 {
-    font-size: 3rem;
-    color: #700606;
-    text-shadow: 1px 1px 2px rgb(202, 195, 195);
+    font-size: 2.5rem;
+    color: #eed4d4;
+    text-shadow: 1px 1px 2px rgb(46, 2, 2);
     margin-bottom: 10px;
     text-align: left; /* Left-aligned section headings */
   }

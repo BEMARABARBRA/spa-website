@@ -282,32 +282,33 @@ body::before {
 /* ================== Couples Massage Styling ================== */
 .couples-massage {
   align-items: center;
-  margin-left: 150px;
-  margin-top: 120px;
-  border-right: 10px solid #4B0606;      
-  border-left: 13px solid #800505;       
-  max-width: 850px;                       
-  /* margin: 40px auto;                       */
-  padding: 30px 45px;                     
-  background-color: rgba(255, 255, 255, 0.5); 
-  border-radius: 20px;                    
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);  
-  text-align: center;                     
-  font-family: 'Times New Roman', Times, serif; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  margin: 150px auto;               /* Center block with vertical spacing */
+  font-weight: 500;
+  font-size: 38px;
+  border-right: 10px solid #4B0606;         /* Right border */
+  border-left: 13px solid #800505;          /* Left border */
+  max-width: 850px;                         /* Restrict width for readability */
+  /* margin: 40px auto;                        Center block on large screens */
+  padding: 30px 45px;                       /* Inner spacing */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  border-radius: 20px;                      /* Rounded corners */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Subtle shadow */
+  text-align: center;                       /* Center text */
+  font-family: 'Times New Roman', Times, serif; /* Elegant serif font */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover */
 }
 
 /* Hover effect */
 .couples-massage:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Lift effect */
   box-shadow: 0 15px 35px rgba(197, 191, 191, 0.2);
 }
 
 /* Heading styling */
 .couples-massage h2 {
   text-align: center;
-  font-size: 2.8rem;
-  color: #6b1010;
+  font-size: 2.8rem;       /* Large heading */
+  color: #6b1010;          /* Deep red-brown */
   margin-bottom: 10px;
   font-weight: bolder;
 }
@@ -315,12 +316,12 @@ body::before {
 /* Subtitle / Italic text */
 .couples-massage p i {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #8a1414;
   margin-bottom: 15px;
 }
 
-/* Description text */
+/* Description text (general paragraphs) */
 .couples-massage p:not(:first-of-type):not(:last-of-type) {
   font-size: 1rem;
   color: #361c0b;
@@ -328,31 +329,77 @@ body::before {
   line-height: 1.6;
 }
 
-/* Duration and Price styling */
+/* Duration and Price styling (last paragraph) */
 .couples-massage p:last-of-type {
   font-weight: bold;
   font-size: 1.1rem;
   color: #2E1A0F;
 }
 
-/* Reserve Button (reuse same style as Signature) */
+/* Reserve Button */
 .couples-massage .btn-reserve {
   display: inline-block;
   margin-top: 15px;
   padding: 12px 25px;
-  background: linear-gradient(135deg, #853E21, #6A2716);
-  color: white;
+  background: linear-gradient(135deg, #960B0B, #960B0B);
+  /*Gradientcolor*/color: white;
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
+  border-radius: 10px;
+  /*Roundedpilllook*/font-weight: bolder;
   transition: background 0.3s ease, transform 0.2s ease;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .couples-massage .btn-reserve:hover {
-  background: linear-gradient(135deg, #6A2716, #853E21);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #6A2716, #853E21); /* Reverse gradient */
+  transform: scale(1.05); /* Slight zoom */
 }
 
+/* ================== RESPONSIVENESS ================== */
+
+/* Small devices (phones) */
+@media (max-width: 600px) {
+  .couples-massage {
+    margin: 20px 15px;     /* Reduce side margins */
+    padding: 20px;         /* Tighter padding */
+  }
+
+  .couples-massage h2 {
+    font-size: 2rem;       /* Smaller heading */
+  }
+
+  .couples-massage p {
+    font-size: 0.95rem;    /* Slightly smaller text */
+  }
+
+  /* Button keeps same design, just a bit smaller */
+  .couples-massage .btn-reserve {
+    font-size: 0.95rem;
+    padding: 10px 22px;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .couples-massage {
+    margin: 30px 40px;     /* Balanced margins */
+    padding: 25px 35px;    /* Slightly smaller padding */
+  }
+
+  .couples-massage h2 {
+    font-size: 2.3rem;     /* Medium heading size */
+  }
+
+  .couples-massage .btn-reserve {
+    font-size: 1rem;
+    padding: 12px 25px;    /* Keep consistent style */
+  }
+}
+
+/* Large devices (desktops) -> default styles above apply */
 
 
   /* =======================================================

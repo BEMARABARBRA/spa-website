@@ -10,19 +10,153 @@
 
     <body>
     
-        
+        <header>
+            <div class="hero">
+                <img src="spa-images/about-spabackground.jpeg" alt="Spa Hero Image" class="hero-img">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                  <h1>THE HERAD SPAS</h1>
+                </div>
+              </div>
+          
+              <!-- NAVBAR -->
+              <nav>
+                <div class="logo-section">
+                  <a href="index.html">
+                    <img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="Spa Logo" />
+                  </a>
+                </div>
+                <div class="nav-controls">
+                  <!-- Close / Menu Button -->
+                    <button class="close-btn" onclick="window.location.href='index.html'">Close</button>
+
+                  <span class="menu-toggle" onclick="openNav()">&#9776;</span>
+                </div>
+              </nav>
+               
+          
+                <!-- Overlay Menu -->
+                <div id="myNav" class="overlay">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <div class="overlay-content">
+                    <a href="index.html"><img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="spa logo" style="height: 120px; width: 110px;"></a>
+                    <a href="about.html">About</a>
+                    <!-- spa menu dropdown -->
+                    <div class="dropdown">
+                      <a href="massages.html" class="dropbtn" onclick="toggleDropdown(event)">Spa Menu</a>
+                      <div class="dropdown-content" id="myDropdown">
+                        <a href="massages.html">Massages</a>
+                        <a href="#">Facial Treatments</a>
+                        <a href="#">Body Scrubs</a>
+                        <a href="#">Waxing Services</a>
+                      </div>
+                    </div>
+                    <a href="#">Special Packages</a>
+                    <a href="#">Memberships</a>
+                    <a href="#">Steam & Bath Therapy</a>
+                  </div>
+                </div>
+              </nav>
+        </header>
+
+    <!-- ================= About Message Section ================= -->
+            <section class="about-message">
+                <h1>The Herad Spas</h1>
+                <h3><i>A Refined Experience</i></h3>
+                <p>Welcome to The Herad Spas, where we transform wellness into a luxurious art form. Our philosophy goes beyond simple treatments; we craft unique experiences designed to rejuvenate your <strong>mind, body, and spirit.</strong></p>
+                <p>Each visit is a personal retreat, where every detail is meticulously curated. From our <strong>expert therapists</strong> to the use of <strong>natural, premium ingredients,</strong> we ensure a service that is both deeply restorative and sensory.</p>
+                <p>Discover a range of offerings, from soothing massages to revitalizing therapies, all designed to awaken your senses and leave you with a natural, lasting glow. At The Herad Spas, you don't just leave feeling refreshed, you leave inspired, ready to embrace the endless possibilities ahead.</p>
+            </section>
 
 
 
 
 
 
+            <footer>
+                <div class="row">
+              
+                  <!-- Logo container -->
+                  <div class="col logo-col">
+                      <a href="index.html"> <!-- clickable logo linking to About page -->
+                          <img src="spa-images/heradspalogoredbackground-removebg-preview.png" alt="Spa Logo" 
+                          style="height: 130px; width: 110px;">
+                      </a>
+                  </div>
+              
+                  <!-- Links column -->
+                  <div class="col">
+                      <a href="#">About Us</a>
+                      <a href="#">Gift Cards</a>
+                      <a href="#">Contact Us</a>
+                  </div>
+              
+                  <!-- Contact column -->
+                  <div class="col">
+                      <a href="#">Whatsapp: +256 753 044293</a>
+                      <a href="#">Email: barbarabemara@gmail.com</a>
+                      <p>HOURS: Mon-Sun (9:00am - 8:00pm)</p>
+                  </div>
+              
+                  <!-- Policy column -->
+                  <div class="col">
+                      <a href="#">Privacy Policy</a>
+                      <a href="#">Terms & Conditions</a>
+                      <a href="#">Cancellation Policy</a>
+                  </div>
+              
+                </div>
+              
+                <hr>
+              
+                <div class="footer-bottom">
+                  <p>&copy; 2025 Herad Spa. All rights reserved.</p>
+                </div>
+              </footer>
 
 
-
-
-
-
-
+<!-- javascript for nav and menu -->
+<script>
+    // ================== OPEN OVERLAY MENU ==================
+    // This function expands the overlay menu to cover the entire screen
+    function openNav() {
+      // Select the overlay element with id="myNav"
+      const overlay = document.getElementById("myNav");
+      
+      // Set its width to 100%, making it fully visible
+      overlay.style.width = "100%";
+    }
+  
+    // ================== CLOSE OVERLAY MENU ==================
+    // This function collapses the overlay menu, hiding it from view
+    function closeNav() {
+      // Select the overlay element with id="myNav"
+      const overlay = document.getElementById("myNav");
+      
+      // Set its width to 0%, hiding the overlay
+      overlay.style.width = "0%";
+    }
+  
+    // ================== TOGGLE DROPDOWN INSIDE OVERLAY ==================
+    // This function opens or closes a dropdown menu inside the overlay
+    function toggleDropdown(event) {
+      // Prevent the browser from following the clicked link
+      event.preventDefault();
+  
+      // Select the dropdown menu element which is the next sibling of the clicked link
+      const dropdown = event.target.nextElementSibling;
+  
+      // Check if the dropdown is currently visible
+      if (dropdown.style.display === "block") {
+        // If visible, hide it
+        dropdown.style.display = "none";
+      } else {
+        // If hidden, show it
+        dropdown.style.display = "block";
+      }
+    }
+  </script>
+  
+          
     </body>
 </html>

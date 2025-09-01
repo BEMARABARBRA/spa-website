@@ -1,5 +1,7 @@
-*{
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,64 +10,69 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;             /* prevent horizontal scroll */
 }
-
-/* Optional overlay for the body */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(243, 235, 235, 0.4); /* Dark semi-transparent layer */
-    z-index: 0; /* Behind all content */
-}
-
 
 /* ================== HEADER / HERO ================== */
 header {
     position: relative;
     width: 100%;
+    max-width: 100%;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  /* Hero Section */
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 80vh; /* Make hero height 80% of viewport */
-    overflow: hidden;
-  }
-  
-  .hero-img {
+    overflow-x: hidden;
+}
+
+/* Ensure images in header/footer never overflow */
+header img, footer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hero Section */
+/* make sure hero starts below nav */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url("your-hero-image.jpg") center/cover no-repeat;
+  margin-top: 0px; /* 🔹 prevents hero from hiding behind nav */
+}
+
+.hero-img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* cover the whole hero area */
     display: block;
-  }
-  
-  /* Overlay on hero for better text readability */
-  .hero-overlay {
+}
+
+/* Overlay on hero for better text readability */
+.hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
-  }
-  
-  /* Hero Text Content */
-  .hero-content {
+}
+
+/* Hero Text Content */
+.hero-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2; /* above overlay */
+    z-index: 2;
     color: #fff;
     text-align: center;
-  }
-  
-  .hero-content h1 {
+}
+
+.hero-content h1 {
     text-shadow: 1px 2px 4px rgba(14, 0, 0, 0.7);
     margin-top: 250px;
     font-size: 4rem;
@@ -75,89 +82,93 @@ header {
     background: linear-gradient(45deg, rgba(77, 66, 54, 0.5));
     border-radius: 15px;
     padding: 20px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
 }
-  
-  /* ================== NAVBAR ================== */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 3; /* above hero */
-    box-sizing: border-box;
-  }
-  
-  /* Logo */
-  nav .logo-section img {
-    height: 60px;
-    width: auto;
-  }
-  
-  /* Nav Controls */
-  .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  /* Close / Menu Button */
-  .close-btn {
-    font-size: 15px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, rgba(121,9,9,0.7), rgba(106,39,22,0.7));
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-weight: bolder;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
+
+/* ================== NAVBAR ================== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;   /* 🔹 smaller padding so nav is slim */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-sizing: border-box;
+  transition: background 0.3s ease; /* 🔹 smooth effect */
+  background: transparent;  /* 🔹 no background at start */
 }
-  
-  .close-btn:hover {
-    background: linear-gradient(135deg, #6A2716, #853E21);
-    transform: scale(1.05);
-  }
-  
-  /* Hamburger Menu */
-  .menu-toggle {
-    font-size: 2rem;
-    cursor: pointer;
-    color: #fff;
-  }
-  
-  /* ================== OVERLAY MENU ================== */
-  .overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    background-color: rgba(41, 3, 3, 0.8);
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
-  
-  .overlay-content {
+
+nav.scrolled {
+  background: rgba(0,0,0,0.6); /* 🔹 background shows on scroll */
+}
+
+/* Logo */
+nav .logo-section img {
+  height: 120px;
+  width: auto;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10000;
+}
+
+
+
+/* Close / Menu Button */
+.close-btn {
+  font-size: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, rgba(121,9,9,0.7), rgba(106,39,22,0.7));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 10000;
+}
+
+/* Nav Controls */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.close-btn:hover {
+  background: linear-gradient(135deg, #6A2716, #853E21);
+  transform: scale(1.05);
+}
+
+/* ================== OVERLAY MENU ================== */
+/* Fullscreen overlay */
+.overlay {
+  height: 100%;
+  width: 0; /* start closed */
+  position: fixed;
+  z-index: 9999; /* make sure it stays on top */
+  top: 0;
+  left: 0;
+  background-color: rgba(39, 2, 2, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
     text-align: center;
-  }
-  
-  .overlay-content a {
+}
+
+.overlay-content a {
     display: block;
     font-size: 2.5rem;
     font-weight: 900;
@@ -165,177 +176,130 @@ header {
     padding: 15px;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  .overlay-content a:hover {
+}
+
+.overlay-content a:hover {
     color: #f5c6a5;
-  }
-  
-  /* Dropdown inside overlay */
-  .overlay .dropdown {
+}
+
+/* Dropdown inside overlay */
+.overlay .dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .overlay .dropdown-content {
+}
+
+.overlay .dropdown-content {
     display: none;
     position: relative;
     text-align: center;
-    background-color: rgba(85, 81, 81, 0.8);
-  }
-  
-  .overlay .dropdown-content a {
-    font-size: 2.3rem;
-    color: black;
-  }
-  
-  .overlay .dropdown:hover .dropdown-content {
-    display: block;
-  }
+    background-color: rgba(112, 60, 60, 0.8);
+}
 
-  
-  /* Close button inside overlay */
-  .overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    font-size: 3rem;
-    cursor: pointer;
-    color: #fff;
-  }
-  
-  /* ================== RESPONSIVENESS ================== */
-  
-  /* Small devices (phones) */
-  @media (max-width: 600px) {
+.overlay .dropdown-content a {
+    font-size: 2.3rem;
+    color: rgb(247, 241, 241);
+}
+
+.overlay .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Close button inside overlay */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ================== RESPONSIVENESS ================== */
+@media (max-width: 600px) {
     .hero-content h1 {
       font-size: 2rem;
+      margin-top: 150px;
     }
-  
-    nav {
-      padding: 10px 20px;
-    }
-  
-    .nav-controls {
-      gap: 10px;
-    }
-  
-    .overlay-content a {
-      font-size: 1.2rem;
-    }
-  
-    .overlay .dropdown-content a {
-      font-size: 1rem;
-    }
-  }
-  
-  /* Medium devices (tablets) */
-  @media (min-width: 601px) and (max-width: 1024px) {
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
-  
-    nav {
-      padding: 12px 30px;
-    }
-  }
-  
+    nav { padding: 10px 20px; }
+    .nav-controls { gap: 10px; }
+    .overlay-content a { font-size: 1.2rem; }
+    .overlay .dropdown-content a { font-size: 1rem; }
+}
 
-  /* ================= About Message Section Styling ================= */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    nav { padding: 12px 30px; }
+}
+
+/* ================= About Message Section Styling ================= */
 .about-message {
-    max-width: 900px;                  /* Limit width for readability */
-    margin: 60px auto;                 /* Center section with top/bottom spacing */
-    padding: 40px 30px;                /* Inner padding for breathing room */
-    background-color: rgba(214, 155, 155, 0.6); /* Slightly transparent background */
-    border-left: 10px solid #800505;  /* Left accent border */
-    border-right: 10px solid #4B0606; /* Right accent border */
-    border-radius: 20px;               /* Smooth rounded corners */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Soft shadow for depth */
-    text-align: center;                /* Center all text */
-    font-family: 'Times New Roman', Times, serif; /* Elegant serif font */
-    line-height: 1.8;                  /* Comfortable spacing for paragraphs */
-    color: #361c0b;                    /* Dark brown text for readability */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-  }
-  
-  /* ================= Hover effect for interactivity ================= */
-  .about-message:hover {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background-color: rgba(194, 84, 84, 0.6);
+    border-left: 10px solid #800505;
+    border-right: 10px solid #4B0606;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.8;
+    color: #080300;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.about-message:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(197, 191, 191, 0.2);
-  }
-  
-  /* ================= Heading Styling ================= */
-  .about-message h1 {
+}
+
+.about-message h1 {
     font-size: 3rem;
-    color: #6b1010;      /* Dark red-brown heading */
-    margin-bottom: px;
+    color: #6b1010;
     font-weight: bolder;
-  }
-  
-  .about-message h3 {
+}
+
+.about-message h3 {
     font-size: 1.6rem;
-    color: #8a1414;      /* Complementary brown */
-    margin-bottom: px;
-  }
-  
-  /* ================= Paragraph Styling ================= */
-  .about-message p {
-    font-size: 1.05rem;
+    color: #8a1414;
+}
+
+.about-message p {
+    font-size: 1.5rem;
     margin-bottom: 20px;
-    text-align: justify;  /* Make it more professional and neat */
-  }
-  
-  .about-message p strong {
-    color: #6A2716;       /* Highlight important words in darker brown */
-  }
-  
-  /* ================= Responsiveness ================= */
-  @media (max-width: 768px) { /* Tablets */
-    .about-message {
-      padding: 30px 20px;
-    }
-  
-    .about-message h1 {
-      font-size: 2.2rem;
-    }
-  
-    .about-message h3 {
-      font-size: 1.3rem;
-    }
-  
-    .about-message p {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) { /* Mobile */
-    .about-message {
-      margin: 30px 15px;
-      padding: 20px 15px;
-    }
-  
-    .about-message h1 {
-      font-size: 1.8rem;
-    }
-  
-    .about-message h3 {
-      font-size: 1.1rem;
-    }
-  
-    .about-message p {
-      font-size: 0.95rem;
-    }
-  }
-  
+    text-align: justify;
+}
+
+.about-message p strong { color: #070707; }
+
+/* Responsive About Section */
+@media (max-width: 768px) {
+    .about-message { padding: 30px 20px; }
+    .about-message h1 { font-size: 2.2rem; }
+    .about-message h3 { font-size: 1.3rem; }
+    .about-message p { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+    .about-message { margin: 30px 15px; padding: 20px 15px; }
+    .about-message h1 { font-size: 1.8rem; }
+    .about-message h3 { font-size: 1.1rem; }
+    .about-message p { font-size: 0.95rem; }
+}
 
 /* ==================== FOOTER STYLING ==================== */
 footer {
     margin-top: 120px;
     background-color: rgba(77, 5, 5, 1);
-
     padding: 40px 20px;
     color: #fff;
     font-family: 'Arial', sans-serif;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 footer .row {
@@ -356,7 +320,6 @@ footer .col {
     margin: 10px 0;
 }
 
-footer .logo-col { flex-direction: column; align-items: flex-start; }
 footer .logo-col img { max-width: 100%; height: auto; }
 
 footer .col a {
@@ -382,25 +345,14 @@ footer .footer-bottom { text-align: center; margin-top: 20px; font-size: 0.85rem
 
 /* Footer responsive */
 @media (min-width: 993px) {
-    footer .row { flex-direction: row; flex-wrap: nowrap; }
-    footer .col { text-align: left; align-items: flex-start; }
-}
-
-@media (max-width: 992px) {
-    footer .row { flex-wrap: wrap; justify-content: space-around; gap: 20px; }
-    footer .col { flex: 1 1 45%; margin: 15px 10px; text-align: left; align-items: flex-start; }
-    footer .col img { height: 100px; }
-}
-
-@media (max-width: 768px) {
-    footer .row { flex-direction: column; align-items: center; gap: 15px; }
-    footer .col { flex: 1 1 100%; margin: 15px 0; align-items: center; text-align: center; }
-    footer .col img { height: 90px; }
-}
-
-@media (max-width: 480px) {
-    footer { padding: 30px 15px; }
-    footer .col a { font-size: 0.85rem; }
-    footer .col p { font-size: 0.8rem; }
-    footer .col img { height: 80px; }
+  footer .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between; /* makes columns spread nicely */
+  }
+  footer .col {
+      text-align: left;
+      align-items: flex-start; /* ✅ aligns items properly */
+  }
 }

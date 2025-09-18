@@ -237,9 +237,9 @@ nav .logo-section img {
     max-width: 900px;
     margin: 60px auto;
     padding: 40px 30px;
-    background-color: rgba(194, 84, 84, 0.6);
+    background-color: rgba(233, 199, 199, 0.7);
     border-left: 10px solid #800505;
-    border-right: 10px solid #4B0606;
+    border-right: 10px solid #800505;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     text-align: center;
@@ -257,8 +257,9 @@ nav .logo-section img {
 }
 
 .about-message h1 {
-    font-size: 3rem;
-    color: #6b1010;
+    text-shadow: 1px 2px 4px rgba(8, 8, 8, 0.9);
+    font-size: 3.6rem;
+    color: #960707;
     font-weight: bolder;
 }
 

@@ -257,8 +257,15 @@ body::after {
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
-  .signature-massage h2 { font-size: 2.8rem; color: #6b1010; margin-bottom: 10px; font-weight: bolder; }
-  
+  /* ================= Signature Section Headings ================= */
+.signature-massage h2 {
+  text-shadow:1px 3px rgb(32,2,2); /* Subtle shadow for depth */
+  font-size: 2.8rem;     /* Large font size for emphasis */
+  color: #8f1010;        /* Deep wine red color for spa elegance */
+  margin-bottom: 10px;   /* Space below the heading */
+  font-weight: bolder;   /* Extra bold weight for importance */
+}
+
   /* =======================================================
      RESPONSIVE DESIGN
   ======================================================= */

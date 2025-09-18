@@ -1,0 +1,280 @@
+/* =======================================================
+   RESET & GLOBAL STYLES
+   - Remove default margins/paddings
+   - Set box-sizing for predictable sizing
+======================================================= */
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding/border in width/height */
+  }
+  
+  /* =======================================================
+     BODY STYLING
+     - Elegant serif font
+     - Full viewport height
+     - Background slideshow with animation
+  ======================================================= */
+  body {
+    font-family: 'Times New Roman', Times, serif; /* Elegant spa font */
+    line-height: 1.6; /* Readable line spacing */
+    color: #7c0e0e; /* Primary text color */
+    min-height: 100vh; /* Minimum full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  
+    position: relative; /* For layering background */
+    z-index: 1; /* Ensure content is above pseudo elements */
+  }
+  
+  /* =======================================================
+   BACKGROUND SLIDESHOW (Fade Cross-Dissolve)
+======================================================= */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  animation: fadeSlideshow 30s infinite;
+}
+
+/* Keyframes for fading between images */
+@keyframes fadeSlideshow {
+  0%   { background-image: url('spa-images/underarmwax.jpeg'); opacity: 1; }
+  16%  { background-image: url('spa-images/underarmwax.jpeg'); opacity: 1; }
+  20%  { background-image: url('spa-images/waxbeans.jpeg'); opacity: 0.6; }
+  36%  { background-image: url('spa-images/waxbeans.jpeg'); opacity: 1; }
+  40%  { background-image: url('spa-images/legwax.jpeg'); opacity: 0.6; }
+  56%  { background-image: url('spa-images/legwax.jpeg'); opacity: 1; }
+  60%  { background-image: url('spa-images/waxingservices.jpeg'); opacity: 0.6; }
+  76%  { background-image: url('spa-images/waxingservices.jpeg'); opacity: 1; }
+  80%  { background-image: url('spa-images/waxbackgroundmelt.jpeg'); opacity: 0.6; }
+  96%  { background-image: url('spa-images/waxstrips.jpeg'); opacity: 1; }
+  100% { background-image: url('spa-images/underarmwax.jpeg'); opacity: 1; }
+}
+
+/* Optional overlay for readability */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.2); /* subtle dark overlay */
+  z-index: 0;
+  pointer-events: none;
+}
+
+  
+  /* =======================================================
+     MAIN CONTAINER
+     - Centers content
+     - Adds top spacing
+  ======================================================= */
+  .container {
+    margin: 120px auto 0 auto; /* Top spacing & center */
+    width: 90%; /* Relative width */
+    max-width: 1200px; /* Constrain for large screens */
+    position: relative; /* For layering */
+    z-index: 1; /* Above overlay */
+  }
+  
+  /* =======================================================
+     HEADINGS
+  ======================================================= */
+  h1 {
+    text-align: center; /* Center heading */
+    font-size: 3rem; /* Large heading */
+    font-weight: 900; /* Bold */
+    margin-bottom: 20px; /* Space below */
+  }
+  h2, h3 {
+    font-weight: bold; /* Bold */
+    margin-bottom: 15px; /* Space below */
+    color: #6b1010; /* Dark red */
+  }
+  
+  /* Paragraph styling */
+  p {
+    margin-bottom: 15px; /* Space below */
+    font-size: 1rem; /* Base font size */
+    color: #380404; /* Paragraph color */
+    line-height: 1.6; /* Readable */
+  }
+  
+  /* =======================================================
+     BUTTONS
+  ======================================================= */
+  button {
+    padding: 6px 12px; /* Inner spacing */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #6a2716; /* Button color */
+    color: white; /* Text color */
+    font-weight: 600; /* Semi-bold */
+    cursor: pointer; /* Pointer cursor */
+    transition: 0.3s ease; /* Smooth hover */
+  }
+  button:hover { background-color: #853e21; }
+  
+  /* Close button */
+  .btn-close {
+    font-size: 1.5rem;
+    background: rgba(94, 15, 15, 0.8);
+    color: white;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+  }
+  .btn-close:hover {
+    background-color: rgba(146, 39, 39, 0.9);
+    transform: scale(1.05);
+  }
+  
+  /* Reserve button */
+  .btn-reserve {
+    padding: 12px 25px;
+    background-color: #960b0b;
+    color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .btn-reserve:hover {
+    background-color: #501202;
+    transform: scale(1.05);
+  }
+  
+  /* =======================================================
+     COMPLEMENTARY SERVICES
+  ======================================================= */
+  .complementaries {
+    text-align: center;
+    font-size: 18px;
+    color: #4b0606;
+    padding: 20px 10px;
+    background: rgba(197, 174, 174, 0.5);
+    border-radius: 15px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .complementaries h3 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #d8cecb;
+    text-shadow: 2px 2px 4px rgb(32,2,2);
+  }
+  .complementary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap: 20px;
+  }
+  .complementary-list .item {
+    background: rgb(197, 174, 174);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-weight: 500;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .complementary-list .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(14,12,12,0.15);
+  }
+  
+  /* =======================================================
+     MASSAGE ITEMS / WAXING SERVICES
+  ======================================================= */
+  .massage-items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .massage-item {
+    flex: 1 1 350px;
+    max-width: 450px;
+    background: rgba(197, 174, 174, 0.8);
+    padding: 25px 35px;
+    border-radius: 15px;
+    border-left: 10px solid #960b0b;
+    border-right: 10px solid #960b0b;
+    box-shadow: 0 2px 15px rgba(22,1,1,0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .massage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(24,1,1,0.25);
+  }
+  .relaxing-massages h1, .signature-massage h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #6b1010;
+    text-shadow: 2px 2px 4px rgb(32,2,2);
+  }
+  
+  .relaxing-massages h1{
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #960b0b;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #f0e2e2;
+    text-shadow: 2px 2px 4px rgb(32,2,2);
+  }
+  /* Signature Massage */
+  .signature-massage {
+    width: 80%;
+    max-width: 1500px;
+    margin: 30px auto;
+    padding: 20px 40px;
+    border-radius: 20px;
+    background: rgba(197,174,174,0.8);
+    border-left: 10px solid #960b0b;
+    border-right: 10px solid #960b0b;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  .signature-massage h2 { font-size: 2.8rem; color: #6b1010; margin-bottom: 10px; font-weight: bolder; }
+  
+  /* =======================================================
+     RESPONSIVE DESIGN
+  ======================================================= */
+  /* Tablets */
+  @media (max-width: 991px) {
+    .massage-items-wrapper { gap: 20px; }
+    .massage-item { flex: 1 1 100%; max-width: 100%; }
+  }
+  
+  /* Mobile */
+  @media (max-width: 600px) {
+    .container { width: 95%; }
+    .complementary-list { grid-template-columns: 1fr; }
+    .btn-close { font-size: 1.2rem; top: 10px; right: 10px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 2rem; }
+    .signature-massage { padding: 15px 20px; }
+  }
+  

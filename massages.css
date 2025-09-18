@@ -1,502 +1,308 @@
 /* =======================================================
    RESET & GLOBAL STYLES
-   ======================================================= */
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Times New Roman', Times, serif;
-    line-height: 1.6;
-    color: #7c0e0e;  /* text color for visibility */
-    height: 100vh;
-    margin: 0;
+======================================================= */
 
-    /* Initial background */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    /* Start animation */
-    animation: bgSlide 15s infinite;
+/* Remove default margin and padding, include border in size calculations */
+* {
+  margin: 0; /* remove all default margin */
+  padding: 0; /* remove all default padding */
+  box-sizing: border-box; /* include padding and border in element's total width/height */
 }
 
-/* Slideshow animation */
+/* Body styling */
+body {
+  font-family: 'Times New Roman', Times, serif; /* main font for body */
+  line-height: 1.6; /* spacing between lines */
+  color: #7c0e0e; /* text color */
+  min-height: 100vh; /* ensure body takes at least full viewport height */
+  background-size: cover; /* cover entire background area */
+  background-position: center; /* center background image */
+  background-repeat: no-repeat; /* prevent repeating */
+  background-attachment: fixed; /* fix background while scrolling */
+  animation: bgSlide 15s infinite; /* apply slideshow animation */
+}
+
+/* Background slideshow animation */
 @keyframes bgSlide {
-    0% {
-        background-image: url('spa-images/footmassagephoto.jpeg');
-    }
-    33% {
-        background-image: url('spa-images/backmassagephoto.jpeg');
-    }
-    66% {
-        background-image: url('spa-images/waterfallsparoom.jpeg');
-    }
-    100% {
-        background-image: url('spa-images/footmassagephoto.jpeg');
-    }
+  0%   { background-image: url('spa-images/footmassagephoto.jpeg'); } /* first image */
+  33%  { background-image: url('spa-images/backmassagephoto.jpeg'); } /* second image */
+  66%  { background-image: url('spa-images/waterfallsparoom.jpeg'); } /* third image */
+  100% { background-image: url('spa-images/footmassagephoto.jpeg'); } /* loop back */
 }
 
-/* Optional overlay to darken background for readability */
+/* Optional overlay for contrast over background */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    /* background: rgba(0,0,0,0.3); */
-    z-index: 0;
+  content: ''; /* required content for pseudo element */
+  position: fixed; /* fix position on screen */
+  top: 0; /* top edge */
+  left: 0; /* left edge */
+  width: 100%; /* full width */
+  height: 100%; /* full height */
+  z-index: 0; /* behind all content */
+  pointer-events: none; /* prevent interaction */
 }
 
-  
-  .container {
-    margin-top: 120px;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  h1{
-    text-align: center;
-    font-size: 100px;
-    font-weight: 900;
-  }
-  h2, h3 {
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-align: left; /* All headings left-aligned */
-  }
-  
-  p {
-    margin-bottom: 15px;
-    font-size: 1rem;
-  }
-  
-  /* =======================================================
-     BUTTONS
-     ======================================================= */
-  button {
-    padding: 4px 4px;
-    border: none;
-    border-radius: 8px;
-    background-color: #6a2716;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #853e21;
-  }
-  
-  /* Close button specific */
-  .btn-close {
-    font-size: 1.5rem;          /* smaller size */
-    background: transparent;
-    color: #6a2716;
-    position: fixed;            /* fixed at top-right */
-    top: 15px;
-    right: 15px;
-    z-index: 999;
-    cursor: pointer;
-  }
-  
-  /* =======================================================
-     SECTION 1 – CLOSE BUTTON AREA
-     ======================================================= */
-  /* ================== Close Button Styling ================== */
+/* Container wrapper for page content */
+.container {
+  margin-top: 120px; /* space from top */
+  width: 90%; /* width relative to viewport */
+  max-width: 1200px; /* prevent from being too wide */
+  margin-left: auto; /* center horizontally */
+  margin-right: auto; /* center horizontally */
+}
+
+/* =======================================================
+   HEADINGS & PARAGRAPHS
+======================================================= */
+
+/* Main page headings */
+h1 {
+  text-align: center; /* center horizontally */
+  font-size: 100px; /* large heading */
+  font-weight: 900; /* very bold */
+}
+
+/* Subheadings */
+h2, h3 {
+  margin-bottom: 20px; /* spacing below heading */
+  font-weight: bold; /* bold text */
+  text-align: left; /* left align for subheadings */
+}
+
+/* Paragraph text */
+p {
+  margin-bottom: 15px; /* spacing below paragraph */
+  font-size: 1rem; /* normal readable size */
+  color: #380404; /* dark text color */
+}
+
+/* =======================================================
+   BUTTON STYLES
+======================================================= */
+
+/* Generic button */
+button {
+  padding: 4px 4px; /* small padding */
+  border: none; /* no border */
+  border-radius: 8px; /* rounded corners */
+  background-color: #6a2716; /* button color */
+  color: white; /* text color */
+  font-weight: 600; /* bold text */
+  cursor: pointer; /* pointer on hover */
+  transition: 0.3s ease; /* smooth hover effect */
+}
+
+/* Hover effect for generic button */
+button:hover {
+  background-color: #853e21; /* darker shade */
+}
+
+/* Close button for modals/popups */
 .btn-close {
-  position: fixed;          /* Stay in top-right even when scrolling */
-  top: 20px;                /* Distance from top */
-  right: 20px;              /* Distance from right */
-  padding: 15px 25px;        /* Small but clickable */
-  background-color: #5e0f0f; /* Deep brown */
-  color: #fff;              /* White text for contrast */
-  font-size: 1.9rem;
-  font-weight: bold;
-  text-decoration: none;    /* Remove underline */
-  border-radius: 8px;       /* Rounded edges */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  z-index: 1000;            /* Stay on top */
+  font-size: 1.5rem; /* size of text */
+  background: rgba(94, 15, 15, 0.8); /* semi-transparent red */
+  color: #fff; /* white text */
+  position: fixed; /* fixed on screen */
+  top: 20px; /* 20px from top */
+  right: 20px; /* 20px from right */
+  padding: 15px 25px; /* padding inside button */
+  border-radius: 8px; /* rounded corners */
+  font-weight: bold; /* bold text */
+  text-decoration: none; /* no underline */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* shadow behind button */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* smooth hover */
+  z-index: 1000; /* on top of everything */
 }
 
-/* Hover effect */
+/* Hover effect for close button */
 .btn-close:hover {
-  background-color: #922727c4; /* Darker brown */
-  transform: scale(1.05);     /* Slight zoom */
+  background-color: rgba(146, 39, 39, 0.9); /* darker red */
+  transform: scale(1.05); /* slight grow */
 }
 
-.btn-close {
-  background-color: rgba(94, 15, 15, 0.8);
-  color: #fff;
-}
-
-.btn-close:hover {
-  background-color: rgba(146, 39, 39, 0.9);
-}
-
-  /* ================== Reserve Button Styling ================== */
+/* Reserve booking button */
 .btn-reserve {
-  position: absolute;           /* Position relative to the massage card */
-  bottom: 15px;                 /* 15px from bottom of card */
-  right: 15px;                  /* 15px from right of card */
-  padding: 8px 16px;            /* Comfortable padding */
-  background-color: #960B0B;    /* Deep brown to match spa theme */
-  color: #fff;                  /* White text */
-  font-weight: bolder;
-  font-size: 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 12px 25px; /* padding inside button */
+  background-color: #960B0B; /* dark red */
+  color: #fff; /* white text */
+  font-weight: bolder; /* extra bold */
+  font-size: 1rem; /* readable size */
+  border-radius: 8px; /* rounded corners */
+  text-decoration: none; /* remove underline */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* subtle shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* smooth hover */
 }
 
-/* Hover effect */
+/* Hover effect for reserve button */
 .btn-reserve:hover {
-  background-color: #501202;
-  transform: scale(1.05);
+  background-color: #501202; /* darker red */
+  transform: scale(1.05); /* grow slightly */
 }
 
-/* Make the massage card relative to allow absolute positioning */
-.massage-item {
-  position: relative;
-}
-.signature-massage {
-  position: relative;
-}
+/* =======================================================
+   COMPLEMENTARIES SECTION
+======================================================= */
 
-  
-  /* ===================== MASSAGE COMPLEMENTARIES SECTION =========================== */
-     .complementaries {
-        text-align: center;
-        margin-top: 120px;
-        font-size: 18px;
-        color: #4b0606;
-        padding: 40px 30px;
-        /*Transparentbackgroundwithslightopacityforreadability*/background: rgba(255, 255, 255, 0.1);
-        /*almostfullytransparent*/border-radius: 0px;
-        margin-bottom: 40px;
-        /*Optional:;
-        subtlebackdropblurforelegance*/backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        /*Optional:;
-        addlightbordertodistinguishsection*/border: 1px solid rgba(255, 255, 255, 0.2);
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
-}
-    
-  
-  .complementaries h3 {
-    text-align: center;
-    text-shadow: 2px 2px 2px rgb(32, 2, 2);
-    font-size: 40px;
-    color: #d8cecb;
-    margin-bottom: 25px;
-  }
-  
-  .complementary-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-  }
-
-  .complementary-list .item {
-    background: #b9b4b4;
-    padding: 15px 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    font-weight: 500;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .complementary-list .item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(14, 12, 12, 0.15);
-  }
-
-
-    /* ================== Signature Massage Styling ================== */
-    .signature-massage {
-      border-right: 10px solid #4B0606;      /* Right border: 10px thick, dark red-brown, solid style */
-      border-left: 13px solid #800505;       /* Left border: 13px thick, slightly brighter red-brown */
-      max-width: 850px;                       /* Limit the block width for readability */
-      margin: 40px auto;                      /* Center the block horizontally with vertical spacing */
-      padding: 30px 45px;                     /* Space inside the box for comfortable content layout */
-      background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background (50% opacity) */
-      border-radius: 20px;                    /* Rounded corners for a soft, elegant look */
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);  /* Subtle shadow for depth and 3D effect */
-      text-align: center;                     /* Center all text inside the block */
-      font-family: 'Times New Roman', Times, serif; /* Elegant serif font for spa theme */
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for hover effects (if added) */
-    }
-    
-    
-
-/* Hover effect for interactivity */
-.signature-massage:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(197, 191, 191, 0.2);
-}
-
-/* Heading styling */
-.signature-massage h2 {
-  text-align: center;
-  font-size: 2.8rem;
-  color: #6b1010;                 /* Dark brown for contrast */
-  margin-bottom: 10px;
-  font-weight: bolder;
-}
-
-/* Subtitle / Italic text */
-.signature-massage p i {
-  display: block;
-  font-size: 1.2rem;
-  color: #8a1414;                 /* Complementary brown */
-  margin-bottom: 15px;
-}
-
-/* Description text */
-.signature-massage p:not(:first-of-type):not(:last-of-type) {
-  font-size: 1rem;
-  color: #361c0b;                 /* Darker brown for readability */
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-/* Duration and Price styling */
-.signature-massage p:last-of-type {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #2E1A0F;
-}
-
-
-/* ================== Couples Massage Styling ================== */
-.couples-massage {
-  align-items: center;
-  margin: 150px auto;               /* Center block with vertical spacing */
-  font-weight: 500;
-  font-size: 38px;
-  border-right: 10px solid #4B0606;         /* Right border */
-  border-left: 13px solid #800505;          /* Left border */
-  max-width: 850px;                         /* Restrict width for readability */
-  /* margin: 40px auto;                        Center block on large screens */
-  padding: 30px 45px;                       /* Inner spacing */
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-  border-radius: 20px;                      /* Rounded corners */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Subtle shadow */
-  text-align: center;                       /* Center text */
-  font-family: 'Times New Roman', Times, serif; /* Elegant serif font */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover */
-}
-
-/* Hover effect */
-.couples-massage:hover {
-  transform: translateY(-5px); /* Lift effect */
-  box-shadow: 0 15px 35px rgba(197, 191, 191, 0.2);
-}
-
-/* Heading styling */
-.couples-massage h2 {
-  text-align: center;
-  font-size: 2.8rem;       /* Large heading */
-  color: #6b1010;          /* Deep red-brown */
-  margin-bottom: 10px;
-  font-weight: bolder;
-}
-
-/* Subtitle / Italic text */
-.couples-massage p i {
-  display: block;
-  font-size: 1.4rem;
-  color: #8a1414;
-  margin-bottom: 15px;
-}
-
-/* Description text (general paragraphs) */
-.couples-massage p:not(:first-of-type):not(:last-of-type) {
-  font-size: 1rem;
-  color: #361c0b;
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-/* Duration and Price styling (last paragraph) */
-.couples-massage p:last-of-type {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #2E1A0F;
-}
-
-/* Reserve Button */
-.couples-massage .btn-reserve {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #960B0B, #960B0B);
-  /*Gradientcolor*/color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  /*Roundedpilllook*/font-weight: bolder;
-  transition: background 0.3s ease, transform 0.2s ease;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-}
-
-.couples-massage .btn-reserve:hover {
-  background: linear-gradient(135deg, #6A2716, #853E21); /* Reverse gradient */
-  transform: scale(1.05); /* Slight zoom */
-}
-
-/* ================== RESPONSIVENESS ================== */
-
-/* Small devices (phones) */
-@media (max-width: 600px) {
-  .couples-massage {
-    margin: 20px 15px;     /* Reduce side margins */
-    padding: 20px;         /* Tighter padding */
-  }
-
-  .couples-massage h2 {
-    font-size: 2rem;       /* Smaller heading */
-  }
-
-  .couples-massage p {
-    font-size: 0.95rem;    /* Slightly smaller text */
-  }
-
-  /* Button keeps same design, just a bit smaller */
-  .couples-massage .btn-reserve {
-    font-size: 0.95rem;
-    padding: 10px 22px;
-  }
-}
-
-/* Medium devices (tablets) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .couples-massage {
-    margin: 30px 40px;     /* Balanced margins */
-    padding: 25px 35px;    /* Slightly smaller padding */
-  }
-
-  .couples-massage h2 {
-    font-size: 2.3rem;     /* Medium heading size */
-  }
-
-  .couples-massage .btn-reserve {
-    font-size: 1rem;
-    padding: 12px 25px;    /* Keep consistent style */
-  }
-}
-
-/* Large devices (desktops) -> default styles above apply */
-
-
-  /* =======================================================
-     MASSAGE SECTIONS (SIGNATURE, RELAXING, THERAPEUTIC, QUICK-FIX)
-     ======================================================= */
-  .signature-massage,
-  .relaxing-massages,
-  .therapeutic-massages,
-  .quick-fix-massages,
-  .mothers {
-    margin-top: 120px;
-    padding: 50px 20px;
-    margin-bottom: 40px;
-    border-radius: 20px;
-  }
-
-  /* ------------- for massages -------------- */
-  p{
-    font-size: 20px;
-    color: #380404;
-  }
-  /* Individual section backgrounds with full transparency */
-.signature-massage, 
-.relaxing-massages, 
-.therapeutic-massages, 
-.quick-fix-massages, 
-.mothers, 
+/* Container for complementary services */
 .complementaries {
-    background: rgba(71, 3, 3, 0.6); /* fully transparent */
-    padding:  10px 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
+  text-align: center; /* center text */
+  font-size: 18px; /* readable size */
+  color: #4b0606; /* dark red */
+  padding: 20px 10px; /* padding around */
+  background: rgba(175, 171, 171, 0.3); /* semi-transparent background */
+  margin-bottom: 40px; /* space below section */
+  backdrop-filter: blur(5px); /* blur behind */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
 }
 
-  
-  .massage-item {
-    border-right: 10px solid #960b0b;
-    border-left: 10px solid #960b0b;
-    background: #c5aeae;
-    padding-left: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    box-shadow: 0 2px 15px rgba(22, 1, 1, 0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .massage-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(24, 1, 1, );
-  }
-  
-  /* Section titles */
-  .relaxing-massages h1,
-  .therapeutic-massages h1,
-  .quick-fix-massages h1,
-  .mothers h1 {
-    font-size: 2.5rem;
-    color: #eed4d4;
-    text-shadow: 1px 1px 2px rgb(46, 2, 2);
-    margin-bottom: 10px;
-    text-align: left; /* Left-aligned section headings */
-  }
+/* Headings inside complementaries */
+.complementaries h3 {
+  text-align: center; /* center heading */
+  font-size: 40px; /* large */
+  color: #dbbfbf; /* light red */
+  margin-bottom: 15px; /* spacing below */
+  text-shadow: 2px 2px 4px rgb(32, 2, 2); /* shadow for readability */
+}
 
-  h2 {
-    font-size: 2rem;
-    color: #700606;
-    text-shadow: 1px 1px 2px rgb(202, 195, 195);
-    margin-bottom: 10px;
+/* Complementary logos */
+.complementaries img {
+  width: 150px; /* fixed width */
+  max-width: 100%; /* responsive max */
+  height: auto; /* maintain aspect ratio */
+  margin-bottom: 20px; /* spacing below */
+}
+
+/* Grid for complementary items */
+.complementary-list {
+  display: grid; /* use CSS grid */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* responsive columns */
+  gap: 20px; /* space between items */
+}
+
+/* Individual complementary item */
+.complementary-list .item {
+  background: #b9b4b4; /* light gray background */
+  padding: 15px 20px; /* inner spacing */
+  border-radius: 12px; /* rounded corners */
+  text-align: center; /* center text */
+  font-weight: 500; /* medium bold */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+}
+
+/* Hover effect for complementary items */
+.complementary-list .item:hover {
+  transform: translateY(-5px); /* move up slightly */
+  box-shadow: 0 6px 15px rgba(14, 12, 12, 0.15); /* deeper shadow */
+}
+
+/* =======================================================
+   SIGNATURE MASSAGE
+======================================================= */
+
+/* Main highlighted massage card */
+.signature-massage {
+  width: 80%; /* slightly narrower than full width */
+  max-width: 1500px; /* max width for large screens */
+  margin: 30px auto; /* center horizontally, space vertically */
+  padding: 20px 40px; /* inner spacing */
+  border-radius: 20px; /* rounded corners */
+  background: rgba(197, 174, 174, 0.8); /* semi-transparent pink */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* subtle shadow */
+  text-align: center; /* center content */
+  border-left: 10px solid #960b0b; /* decorative left border */
+  border-right: 10px solid #960b0b; /* decorative right border */
+}
+
+/* Heading inside signature massage */
+.signature-massage h2 {
+  text-align: center; /* center text */
+  font-size: 3rem; /* large heading */
+  margin-bottom: 15px; /* spacing below */
+  color: #8d0f0f; /* dark red */
+  text-shadow: 2px 2px 4px rgb(29, 2, 2); /* shadow for readability */
+}
+
+/* =======================================================
+   MASSAGE ITEMS WRAPPER
+======================================================= */
+
+/* Wrapper for multiple massage items */
+.massage-items-wrapper {
+  display: flex; /* use flexbox */
+  flex-wrap: wrap; /* wrap items to next line */
+  gap: 30px; /* space between items */
+  margin-bottom: 50px; /* spacing below section */
+  justify-content: flex-start; /* align left by default */
+}
+
+/* Individual massage item card */
+.massage-item {
+  flex: 1 1 calc((100% - 60px) / 3); /* 3 per row minus gap */
+  max-width: calc((100% - 60px) / 3); /* prevent overflow */
+  background: rgba(197, 174, 174, 0.8); /* semi-transparent pink */
+  padding: 25px 35px; /* inner spacing */
+  border-radius: 15px; /* rounded corners */
+  text-align: center; /* center content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+  border-left: 10px solid #960b0b; /* left border */
+  border-right: 10px solid #960b0b; /* right border */
+}
+
+/* Hover effect for massage item */
+.massage-item:hover {
+  transform: translateY(-5px); /* lift up */
+  box-shadow: 0 6px 25px rgba(24, 1, 1, 0.25); /* deeper shadow */
+}
+
+/* Center last row if fewer than 3 items */
+.massage-items-wrapper:has(.massage-item:nth-last-child(2)),
+.massage-items-wrapper:has(.massage-item:nth-last-child(1)) {
+  justify-content: center; /* center last row */
+}
+
+/* Section headings for massage types */
+.relaxing-massages h1,
+.therapeutic-massages h1,
+.quick-fix-massages h1,
+.mothers h1 {
+  margin-top: 120px; /* spacing above */
+  background-color: #960B0B; /* dark red background */
+  color: #eed4d4; /* light text */
+  padding: 20px; /* inner spacing */
+  font-size: 2.5rem; /* heading size */
+  text-shadow: 1px 1px 2px rgb(46,2,2); /* subtle shadow */
+  margin-bottom: 10px; /* spacing below */
+  text-align: left; /* left align */
+}
+
+/* =======================================================
+   RESPONSIVE DESIGN
+======================================================= */
+
+/* Tablets: 2 massage items per row */
+@media (max-width: 991px) {
+  .massage-item {
+    flex: 1 1 calc(50% - 30px); /* 2 per row */
+    max-width: calc(50% - 30px); /* prevent overflow */
   }
-  
-  /* =======================================================
-     RESPONSIVE BREAKPOINTS
-     ======================================================= */
-  @media (max-width: 991px) {
-    .section-2 h1, .massage-item h2, .relaxing-massages h1,
-    .therapeutic-massages h1, .quick-fix-massages h1, .mothers h1 {
-      font-size: 1.8rem;
-    }
-    .section-1, .signature-massage, .relaxing-massages,
-    .therapeutic-massages, .quick-fix-massages, .mothers {
-      padding: 30px 20px;
-    }
+}
+
+/* Phones: 1 massage item per row */
+@media (max-width: 600px) {
+  .massage-item {
+    flex: 1 1 100%; /* full width */
+    max-width: 100%; /* prevent overflow */
   }
-  
-  @media (max-width: 600px) {
-    .container {
-      width: 95%;
-    }
-    .complementary-list {
-      grid-template-columns: 1fr;
-    }
-    .btn-close {
-      font-size: 1.2rem;
-      top: 10px;
-      right: 10px;
-    }
+  .container {
+    width: 95%; /* slightly wider for small screens */
   }
-  
+  .complementary-list {
+    grid-template-columns: 1fr; /* single column */
+  }
+  .btn-close {
+    font-size: 1.2rem; /* smaller text */
+    top: 10px; /* move closer to top */
+    right: 10px; /* move closer to right */
+  }
+}

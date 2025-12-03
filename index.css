@@ -92,11 +92,36 @@ nav.scrolled {
     transition: background 0.3s, transform 0.2s;
 }
 
-.reserve-btn:hover {
+/* .reserve-btn:hover {
     color: white;
     background-color: #4d0505;
     transform: scale(1.05);
-}
+} */
+
+/* Button styling */
+.reserve-btn {
+    display: inline-block;
+    background-color: #960B0B; /* WhatsApp green */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reserve-btn:hover {
+    background-color: #4d0505; /* Darker green on hover */
+  }
+  
+  /* Optional: spacing for nav-controls */
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
 /* ================== OVERLAY NAVIGATION (FULLSCREEN MENU) ================== */
 .overlay {

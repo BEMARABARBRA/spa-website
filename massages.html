@@ -212,5 +212,52 @@
 
   </div> <!-- end container -->
 
+
+  <!-- ============== javascript ============ -->
+  <script>
+    // Select all buttons/links with the class 'btn-reserve'
+    const reserveButtons = document.querySelectorAll('.btn-reserve');
+    
+    reserveButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
+    
+        // Find the closest massage container
+        const massageItem = button.closest('.massage-item, .signature-massage');
+        let massageName = "a massage session";
+        let massageDesc = "";
+        let massagePrice = "";
+        let massageDuration = "";
+    
+        if (massageItem) {
+          // Get massage name
+          const titleElement = massageItem.querySelector('h2');
+          if (titleElement) massageName = titleElement.textContent.trim();
+    
+          // Get first paragraph as description (skip duration/price)
+          const descElement = massageItem.querySelector('p:not(.duration):not(.price)');
+          if (descElement) massageDesc = descElement.textContent.trim();
+    
+          // Get price
+          const priceElement = massageItem.querySelector('.price');
+          if (priceElement) massagePrice = priceElement.textContent.trim();
+    
+          // Get duration
+          const durationElement = massageItem.querySelector('.duration');
+          if (durationElement) massageDuration = durationElement.textContent.trim();
+        }
+    
+        // Build WhatsApp message
+        const message = encodeURIComponent(
+          `Hello, I want to reserve: ${massageName}\nDescription: ${massageDesc}\nDuration: ${massageDuration}\nPrice: ${massagePrice}`
+        );
+    
+        // Open WhatsApp with message
+        window.open(`https://wa.me/256753044293?text=${message}`, '_blank');
+      });
+    });
+    </script>
+    
+    
 </body>
 </html>

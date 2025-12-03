@@ -52,5 +52,61 @@
         </div>     
     </div> <!-- End container -->
 
+
+    <!-- ============== javascript ============== -->
+    <script>
+        const phone = "256753044293"; // your WhatsApp number
+        
+        document.querySelectorAll(".btn-reserve").forEach(button => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+        
+                const item = this.closest(".massage-item");
+        
+                // Title (always exists)
+                const title = item.querySelector("h2")?.innerText.trim() || "";
+        
+                // Optional intro line (italic)
+                const intro = item.querySelector("p i")?.innerText.trim() || "";
+        
+                // Description: the FIRST <p> that is NOT italic and NOT price
+                let description = "";
+                const paragraphs = item.querySelectorAll("p");
+        
+                paragraphs.forEach(p => {
+                    const text = p.innerText.trim().toLowerCase();
+        
+                    if (
+                        !p.querySelector("i") &&   // not the italic intro
+                        !text.includes("price:")   // not the price paragraph
+                    ) {
+                        if (!description) description = p.innerText.trim();
+                    }
+                });
+        
+                // Price (inside <strong><p>…</p></strong>)
+                const price =
+                    item.querySelector("strong p")?.innerText.trim() ||
+                    item.querySelector("p:nth-of-type(3)")?.innerText.trim() ||
+                    "";
+        
+                const message =
+        `Hello Herad Spa, I would like to reserve the following steam or bath therapy:
+        
+        *${title}*
+        ${intro ? intro + "\n" : ""}
+        ${description}
+        
+        ${price}
+        
+        Please assist me with availability.`;
+        
+                const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank");
+            });
+        });
+        </script>
+        
+    
 </body>
 </html>

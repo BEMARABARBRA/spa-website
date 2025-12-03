@@ -95,5 +95,52 @@
 
     </div> <!-- End container -->
 
+
+    <!-- ========== javascript =========== -->
+    <script>
+        // Select all reserve buttons
+        const reserveButtons = document.querySelectorAll('.btn-reserve');
+        
+        reserveButtons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault(); // stop normal link behavior
+        
+            // Find the service container (signature or massage-item)
+            const serviceItem = button.closest('.massage-item, .signature-massage');
+        
+            let serviceName = "a service";
+            let serviceDesc = "";
+            let serviceDuration = "";
+            let servicePrice = "";
+        
+            if (serviceItem) {
+              // Service name
+              const titleElement = serviceItem.querySelector('h2');
+              if (titleElement) serviceName = titleElement.textContent.trim();
+        
+              // First paragraph that is NOT duration or price
+              const descElement = serviceItem.querySelector('p:not(.duration):not(.price)');
+              if (descElement) serviceDesc = descElement.textContent.trim();
+        
+              // Duration
+              const durationElement = serviceItem.querySelector('.duration');
+              if (durationElement) serviceDuration = durationElement.textContent.trim();
+        
+              // Price
+              const priceElement = serviceItem.querySelector('.price');
+              if (priceElement) servicePrice = priceElement.textContent.trim();
+            }
+        
+            // Build WhatsApp message
+            const message = encodeURIComponent(
+              `Hello, I would like to reserve:\n${serviceName}\n\nDescription: ${serviceDesc}\n${serviceDuration}\n${servicePrice}`
+            );
+        
+            // Open WhatsApp
+            window.open(`https://wa.me/256753044293?text=${message}`, '_blank');
+          });
+        });
+        </script>
+        
 </body>
 </html>

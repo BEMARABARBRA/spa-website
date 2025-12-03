@@ -80,5 +80,37 @@
         
     </div> <!-- End container -->
 
+
+    <!-- ================= javascript ============= -->
+    <script>
+        const phone = "256753044293"; // your WhatsApp number
+    
+        document.querySelectorAll(".btn-reserve").forEach(button => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault(); // stop the link from going to reserve.html
+    
+                const item = this.closest(".massage-item");
+                const title = item.querySelector("h2")?.innerText || "";
+                const desc = item.querySelector("p:nth-of-type(1)")?.innerText || "";
+                const duration = item.querySelector("p:nth-of-type(2)")?.innerText || "";
+                const price = item.querySelector("p:nth-of-type(3)")?.innerText || "";
+    
+                const message =
+    `Hello Herad Spa, I would like to reserve this package:
+    
+    *${title}*
+    ${desc}
+    
+    ${duration}
+    ${price}
+    
+    Please assist me with availability.`;
+    
+                const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank");
+            });
+        });
+    </script>
+    
 </body>
 </html>

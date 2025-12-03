@@ -111,5 +111,52 @@
         
     </div> <!-- End container -->
 
+
+    <!-- ============= javascript ============ -->
+    <script>
+        // Select all reserve buttons
+        const reserveButtons = document.querySelectorAll('.btn-reserve');
+        
+        reserveButtons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default navigation
+        
+            // Find the closest massage/waxing container
+            const serviceItem = button.closest('.massage-item, .signature-massage');
+        
+            let serviceName = "a service";
+            let serviceDesc = "";
+            let serviceDuration = "";
+            let servicePrice = "";
+        
+            if (serviceItem) {
+              // NAME
+              const titleElement = serviceItem.querySelector('h2');
+              if (titleElement) serviceName = titleElement.textContent.trim();
+        
+              // DESCRIPTION
+              const descElement = serviceItem.querySelector('p:not(.duration):not(.price)');
+              if (descElement) serviceDesc = descElement.textContent.trim();
+        
+              // DURATION (some waxing items do not have)
+              const durationElement = serviceItem.querySelector('.duration');
+              if (durationElement) serviceDuration = durationElement.textContent.trim();
+        
+              // PRICE
+              const priceElement = serviceItem.querySelector('.price');
+              if (priceElement) servicePrice = priceElement.textContent.trim();
+            }
+        
+            // Build WhatsApp message
+            const message = encodeURIComponent(
+              `Hello, I would like to reserve:\n${serviceName}\n\nDescription: ${serviceDesc}\n${serviceDuration ? serviceDuration + "\n" : ""}${servicePrice}`
+            );
+        
+            // Open WhatsApp with auto-filled message
+            window.open(`https://wa.me/256753044293?text=${message}`, '_blank');
+          });
+        });
+        </script>
+        
 </body>
 </html>

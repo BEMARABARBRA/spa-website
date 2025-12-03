@@ -98,10 +98,21 @@ nav.scrolled {
     transform: scale(1.05);
 } */
 
+/* Container behind the button for glass effect */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.25); /* semi-transparent background */
+    backdrop-filter: blur(10px); /* glass effect */
+    padding: 5px 15px; /* spacing around content */
+    border-radius: 10px; /* rounded corners for glass */
+}
+
 /* Button styling */
 .reserve-btn {
     display: inline-block;
-    background-color: #960B0B; /* WhatsApp green */
+    background-color: #960B0B; /* deep red button */
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -109,19 +120,14 @@ nav.scrolled {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .reserve-btn:hover {
-    background-color: #4d0505; /* Darker green on hover */
-  }
-  
-  /* Optional: spacing for nav-controls */
-  .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reserve-btn:hover {
+    background-color: #4d0505; /* darker red on hover */
+    transform: translateY(-2px); /* subtle lift effect */
+}
+
 
 /* ================== OVERLAY NAVIGATION (FULLSCREEN MENU) ================== */
 .overlay {

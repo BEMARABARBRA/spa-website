@@ -9,44 +9,73 @@
   box-sizing: border-box; /* include padding and border in element's total width/height */
 }
 
-/* Body styling */
+/* =======================================================
+     BODY STYLING
+======================================================= */
 body {
-  font-family: 'Times New Roman', Times, serif; /* main font for body */
-  line-height: 1.6; /* spacing between lines */
-  color: #7c0e0e; /* text color */
-  min-height: 100vh; /* ensure body takes at least full viewport height */
-  background-size: cover; /* cover entire background area */
-  background-position: center; /* center background image */
-  background-repeat: no-repeat; /* prevent repeating */
-  background-attachment: fixed; /* fix background while scrolling */
-  animation: bgSlide 15s infinite; /* apply slideshow animation */
+  font-family: 'Times New Roman', Times, serif; /* Main font for body */
+  line-height: 1.6; /* Comfortable spacing */
+  color: #7c0e0e; /* Primary text color */
+  min-height: 100vh; /* Ensure full viewport height */
+  position: relative; /* Needed for pseudo-elements */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  z-index: 1; /* Keep content above background layers */
+  background: none; /* Body itself has no background */
 }
 
-/* Background slideshow animation */
-@keyframes bgSlide {
-  0%   { background-image: url('spa-images/footmassagephoto.jpeg'); } /* first image */
-  33%  { background-image: url('spa-images/backmassagephoto.jpeg'); } /* second image */
-  66%  { background-image: url('spa-images/waterfallsparoom.jpeg'); } /* third image */
-  100% { background-image: url('spa-images/footmassagephoto.jpeg'); } /* loop back */
-}
-
-/* Optional overlay for contrast over background */
 body::before {
-  content: ''; /* required content for pseudo element */
-  position: fixed; /* fix position on screen */
-  top: 0; /* top edge */
-  left: 0; /* left edge */
-  width: 100%; /* full width */
-  height: 100%; /* full height */
-  z-index: 0; /* behind all content */
-  pointer-events: none; /* prevent interaction */
+  content: '';
+  position: fixed; /* fixed to viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2; /* behind all content */
+  background-size: cover; /* fill viewport */
+  background-position: center; /* center the image */
+  background-repeat: no-repeat; /* prevent repeating */
+  filter: brightness(0.75); /* slightly darker for readability */
+  -webkit-filter: brightness(0.75); /* Safari support */
+  animation: primaryCinematic 30s infinite ease-in-out; /* smooth animation loop */
+  transform-origin: center center; /* scaling from center */
 }
 
-/* Container wrapper for page content */
+/* =======================================================
+     SECONDARY CINEMATIC LAYER (Optional Overlay)
+======================================================= */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1; /* above primary, below content */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.65);
+  opacity: 0.25; /* subtle overlay */
+  animation: secondaryCinematic 45s infinite ease-in-out; /* smooth animation loop */
+  transform-origin: center center;
+  pointer-events: none; /* clicks pass through */
+}
+
+/* =======================================================
+     PRIMARY KEYFRAMES
+======================================================= */
+@keyframes primaryCinematic {
+  0% { background-image: url('spa-images/footmassagephoto.jpeg'); transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
+  33% { background-image: url('spa-images/backmassagephoto.jpeg'); transform: scale(1.03) translate(-5px, -5px) rotate(0.3deg); opacity: 1; }
+  66% { background-image: url('spa-images/waterfallsparoom.jpeg'); transform: scale(1.05) translate(5px, 5px) rotate(-0.3deg); opacity: 1; }
+  100% { background-image: url('spa-images/footmassagephoto.jpeg'); transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
+}
+
+/* =======================================================
+     CONTAINER
+======================================================= */
 .container {
-  margin-top: 120px; /* space from top */
-  width: 90%; /* width relative to viewport */
-  max-width: 1200px; /* prevent from being too wide */
+  margin-top: 80px; /* spacing from top */
+  width: 90%; /* relative width */
+  max-width: 1200px; /* prevent stretching on large screens */
   margin-left: auto; /* center horizontally */
   margin-right: auto; /* center horizontally */
 }
@@ -54,226 +83,220 @@ body::before {
 /* =======================================================
    HEADINGS & PARAGRAPHS
 ======================================================= */
-
-/* Main page headings */
 h1 {
-  text-align: center; /* center horizontally */
-  font-size: 100px; /* large heading */
-  font-weight: 900; /* very bold */
+  text-align: center; /* center heading */
+  font-size: 100px; /* large for hero text */
+  font-weight: 900; /* extra bold */
 }
 
-/* Subheadings */
 h2, h3 {
   margin-bottom: 20px; /* spacing below heading */
   font-weight: bold; /* bold text */
-  text-align: left; /* left align for subheadings */
+  text-align: left; /* align subheadings left */
 }
 
-/* Paragraph text */
 p {
   margin-bottom: 15px; /* spacing below paragraph */
-  font-size: 1rem; /* normal readable size */
-  color: #380404; /* dark text color */
+  font-size: 1.0rem; /* readable */
+  color: #380404; /* dark red */
 }
+p i {
+  font-size: 0.98rem; /* slightly smaller for italics */
+  font-weight: 600;
+  margin-bottom: 15px; /* spacing below paragraph */
+  font-size: 1.0rem; /* readable */
+  color: #b10808; /* dark red */
+}
+.duration,
+.price {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* subtle shadow */
+  font-weight: 700;                  /* Bold text */
+  font-size: 1.2rem;                 /* Slightly larger for emphasis */
+  color: #851111;                    /* Dark red */
+  display: inline-block;             /* Helps with padding */
+  padding: 4px 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  /* background: rgba(255, 230, 230, 0.4); Subtle highlight */
+}
+
 
 /* =======================================================
    BUTTON STYLES
 ======================================================= */
-
-/* Generic button */
 button {
   padding: 4px 4px; /* small padding */
-  border: none; /* no border */
+  border: none; /* remove border */
   border-radius: 8px; /* rounded corners */
-  background-color: #6a2716; /* button color */
+  background-color: #6a2716; /* base button color */
   color: white; /* text color */
-  font-weight: 600; /* bold text */
+  font-weight: 600; /* semi-bold */
   cursor: pointer; /* pointer on hover */
-  transition: 0.3s ease; /* smooth hover effect */
+  transition: 0.3s ease; /* smooth hover */
 }
 
-/* Hover effect for generic button */
 button:hover {
-  background-color: #853e21; /* darker shade */
+  background-color: #960B0B; /* darker hover */
 }
 
-/* Close button for modals/popups */
 .btn-close {
-  font-size: 1.5rem; /* size of text */
-  background: rgba(94, 15, 15, 0.8); /* semi-transparent red */
-  color: #fff; /* white text */
-  position: fixed; /* fixed on screen */
-  top: 20px; /* 20px from top */
-  right: 20px; /* 20px from right */
-  padding: 15px 25px; /* padding inside button */
-  border-radius: 8px; /* rounded corners */
-  font-weight: bold; /* bold text */
-  text-decoration: none; /* no underline */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* shadow behind button */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* smooth hover */
-  z-index: 1000; /* on top of everything */
+  font-size: 1.5rem;
+  background: rgba(94, 15, 15, 0.8);
+  color: #fff;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000; /* on top of all */
 }
 
-/* Hover effect for close button */
 .btn-close:hover {
-  background-color: rgba(146, 39, 39, 0.9); /* darker red */
-  transform: scale(1.05); /* slight grow */
+  background-color: rgba(156, 14, 14, 0.9);
+  transform: scale(1.05);
 }
 
-/* Reserve booking button */
 .btn-reserve {
-  padding: 12px 25px; /* padding inside button */
-  background-color: #960B0B; /* dark red */
-  color: #fff; /* white text */
-  font-weight: bolder; /* extra bold */
-  font-size: 1rem; /* readable size */
-  border-radius: 8px; /* rounded corners */
-  text-decoration: none; /* remove underline */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* subtle shadow */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* smooth hover */
+  padding: 12px 25px;
+  background-color: #960B0B;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover effect for reserve button */
 .btn-reserve:hover {
-  background-color: #501202; /* darker red */
-  transform: scale(1.05); /* grow slightly */
+  background-color: #501202;
+  transform: scale(1.05);
 }
 
 /* =======================================================
-   COMPLEMENTARIES SECTION
+   COMPLEMENTARIES
 ======================================================= */
-
-/* Container for complementary services */
 .complementaries {
-  text-align: center; /* center text */
-  font-size: 18px; /* readable size */
-  color: #4b0606; /* dark red */
-  padding: 20px 10px; /* padding around */
-  background: rgba(175, 171, 171, 0.3); /* semi-transparent background */
-  margin-bottom: 40px; /* space below section */
-  backdrop-filter: blur(5px); /* blur behind */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+  text-align: center;
+  font-size: 18px;
+  color: #4b0606;
+  padding: 20px 10px;
+  background: rgba(175, 171, 171, 0.3);
+  margin-bottom: 40px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Headings inside complementaries */
 .complementaries h3 {
-  text-align: center; /* center heading */
-  font-size: 40px; /* large */
-  color: #dbbfbf; /* light red */
-  margin-bottom: 15px; /* spacing below */
-  text-shadow: 2px 2px 4px rgb(32, 2, 2); /* shadow for readability */
+  text-align: center;
+  font-size: 40px;
+  color: #ebdada;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgb(32, 2, 2);
 }
 
-/* Complementary logos */
 .complementaries img {
-  width: 150px; /* fixed width */
-  max-width: 100%; /* responsive max */
-  height: auto; /* maintain aspect ratio */
-  margin-bottom: 20px; /* spacing below */
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-/* Grid for complementary items */
 .complementary-list {
-  display: grid; /* use CSS grid */
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* responsive columns */
-  gap: 20px; /* space between items */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
 }
 
-/* Individual complementary item */
 .complementary-list .item {
-  background: #b9b4b4; /* light gray background */
-  padding: 15px 20px; /* inner spacing */
-  border-radius: 12px; /* rounded corners */
-  text-align: center; /* center text */
-  font-weight: 500; /* medium bold */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+  background: #b9b4b4;
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for complementary items */
 .complementary-list .item:hover {
-  transform: translateY(-5px); /* move up slightly */
-  box-shadow: 0 6px 15px rgba(14, 12, 12, 0.15); /* deeper shadow */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(14, 12, 12, 0.15);
 }
 
 /* =======================================================
    SIGNATURE MASSAGE
 ======================================================= */
-
-/* Main highlighted massage card */
 .signature-massage {
-  width: 80%; /* slightly narrower than full width */
-  max-width: 1500px; /* max width for large screens */
-  margin: 30px auto; /* center horizontally, space vertically */
-  padding: 20px 40px; /* inner spacing */
-  border-radius: 20px; /* rounded corners */
-  background: rgba(197, 174, 174, 0.8); /* semi-transparent pink */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* subtle shadow */
-  text-align: center; /* center content */
-  border-left: 10px solid #960b0b; /* decorative left border */
-  border-right: 10px solid #960b0b; /* decorative right border */
+  width: 85%;
+  max-width: 1500px;
+  margin: 30px auto;
+  padding: 30px 50px;
+  border-radius: 20px;
+  background: rgba(197, 174, 174, 0.8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.699);
+  text-align: center;
+  border-left: 10px solid #960b0b;
+  border-right: 10px solid #960b0b;
 }
 
-/* Heading inside signature massage */
 .signature-massage h2 {
-  text-align: center; /* center text */
-  font-size: 3rem; /* large heading */
-  margin-bottom: 15px; /* spacing below */
-  color: #8d0f0f; /* dark red */
-  text-shadow: 2px 2px 4px rgb(29, 2, 2); /* shadow for readability */
+  text-align: center;
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+  color: #8d0f0f;
+  text-shadow: 2px 2px 4px rgb(29, 2, 2);
 }
 
 /* =======================================================
-   MASSAGE ITEMS WRAPPER
+   MASSAGE ITEMS
 ======================================================= */
-
-/* Wrapper for multiple massage items */
 .massage-items-wrapper {
-  display: flex; /* use flexbox */
-  flex-wrap: wrap; /* wrap items to next line */
-  gap: 30px; /* space between items */
-  margin-bottom: 50px; /* spacing below section */
-  justify-content: flex-start; /* align left by default */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+  justify-content: flex-start;
 }
 
-/* Individual massage item card */
 .massage-item {
-  flex: 1 1 calc((100% - 60px) / 3); /* 3 per row minus gap */
-  max-width: calc((100% - 60px) / 3); /* prevent overflow */
-  background: rgba(197, 174, 174, 0.8); /* semi-transparent pink */
-  padding: 25px 35px; /* inner spacing */
-  border-radius: 15px; /* rounded corners */
-  text-align: center; /* center content */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
-  border-left: 10px solid #960b0b; /* left border */
-  border-right: 10px solid #960b0b; /* right border */
+  flex: 1 1 calc((100% - 60px) / 3); /* 3 per row */
+  max-width: calc((100% - 60px) / 3);
+  background: rgba(197, 174, 174, 0.8);
+  padding: 25px 35px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 10px solid #960b0b;
+  border-right: 10px solid #960b0b;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.699);
 }
 
-/* Hover effect for massage item */
 .massage-item:hover {
-  transform: translateY(-5px); /* lift up */
-  box-shadow: 0 6px 25px rgba(24, 1, 1, 0.25); /* deeper shadow */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(24, 1, 1, 0.808);
 }
 
-/* Center last row if fewer than 3 items */
 .massage-items-wrapper:has(.massage-item:nth-last-child(2)),
 .massage-items-wrapper:has(.massage-item:nth-last-child(1)) {
   justify-content: center; /* center last row */
 }
 
-/* Section headings for massage types */
 .relaxing-massages h1,
 .therapeutic-massages h1,
 .quick-fix-massages h1,
 .mothers h1 {
-  margin-top: 120px; /* spacing above */
-  background-color: #960B0B; /* dark red background */
-  color: #eed4d4; /* light text */
-  padding: 20px; /* inner spacing */
-  font-size: 2.5rem; /* heading size */
-  text-shadow: 1px 1px 2px rgb(46,2,2); /* subtle shadow */
-  margin-bottom: 10px; /* spacing below */
-  text-align: left; /* left align */
+  margin-top: 80px;
+  background-color: #960B0B;
+  color: #eed4d4;
+  padding: 20px;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 2px rgb(46,2,2);
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 /* =======================================================
@@ -284,7 +307,7 @@ button:hover {
 @media (max-width: 991px) {
   .massage-item {
     flex: 1 1 calc(50% - 30px); /* 2 per row */
-    max-width: calc(50% - 30px); /* prevent overflow */
+    max-width: calc(50% - 30px);
   }
 }
 
@@ -292,17 +315,26 @@ button:hover {
 @media (max-width: 600px) {
   .massage-item {
     flex: 1 1 100%; /* full width */
-    max-width: 100%; /* prevent overflow */
+    max-width: 100%;
   }
   .container {
-    width: 95%; /* slightly wider for small screens */
+    width: 95%; /* wider for small screens */
   }
   .complementary-list {
     grid-template-columns: 1fr; /* single column */
   }
   .btn-close {
-    font-size: 1.2rem; /* smaller text */
-    top: 10px; /* move closer to top */
-    right: 10px; /* move closer to right */
+    font-size: 1.2rem;
+    top: 10px;
+    right: 10px;
+  }
+  h1 {
+    font-size: 60px; /* scale hero heading for small screens */
+  }
+  .signature-massage h2 {
+    font-size: 2rem; /* reduce heading size */
+  }
+  .complementaries h3 {
+    font-size: 28px; /* reduce heading size */
   }
 }

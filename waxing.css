@@ -10,24 +10,25 @@
   }
   
   /* =======================================================
-     BODY STYLING
-     - Elegant serif font
-     - Full viewport height
-     - Background slideshow with animation
-  ======================================================= */
-  body {
-    font-family: 'Times New Roman', Times, serif; /* Elegant spa font */
-    line-height: 1.6; /* Readable line spacing */
-    color: #7c0e0e; /* Primary text color */
-    min-height: 100vh; /* Minimum full viewport height */
-    overflow-x: hidden; /* Prevent horizontal scroll */
-  
-    position: relative; /* For layering background */
-    z-index: 1; /* Ensure content is above pseudo elements */
-  }
-  
-  /* =======================================================
-   BACKGROUND SLIDESHOW (Fade Cross-Dissolve)
+   BODY STYLING
+   - Elegant serif font
+   - Full viewport height
+   - Base for animated background layers
+======================================================= */
+body {
+  font-family: 'Times New Roman', Times, serif; /* Elegant spa font */
+  line-height: 1.6; /* Readable spacing */
+  color: #7c0e0e; /* Deep red text color */
+  min-height: 100vh; /* Full viewport height */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  position: relative; /* Base for pseudo-elements */
+  z-index: 1; /* Keep main content above backgrounds */
+}
+
+/* =======================================================
+   BACKGROUND SLIDESHOW - PRIMARY LAYER
+   - Fades between multiple images
+   - Slow zoom & slight floating motion
 ======================================================= */
 body::before {
   content: '';
@@ -36,38 +37,105 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
+  z-index: -2; /* Behind all content */
+  background-size: cover; /* Maintain image proportions */
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -1;
-  animation: fadeSlideshow 30s infinite;
+  filter: brightness(0.85); /* Slight dark overlay for readability */
+
+  /* Animate fade + floating/zoom */
+  animation: primaryCinematic 60s infinite ease-in-out;
+  transform-origin: center center;
 }
 
-/* Keyframes for fading between images */
-@keyframes fadeSlideshow {
-  0%   { background-image: url('spa-images/underarmwax.jpeg'); opacity: 1; }
-  16%  { background-image: url('spa-images/underarmwax.jpeg'); opacity: 1; }
-  20%  { background-image: url('spa-images/waxbeans.jpeg'); opacity: 0.6; }
-  36%  { background-image: url('spa-images/waxbeans.jpeg'); opacity: 1; }
-  40%  { background-image: url('spa-images/legwax.jpeg'); opacity: 0.6; }
-  56%  { background-image: url('spa-images/legwax.jpeg'); opacity: 1; }
-  60%  { background-image: url('spa-images/waxingservices.jpeg'); opacity: 0.6; }
-  76%  { background-image: url('spa-images/waxingservices.jpeg'); opacity: 1; }
-  80%  { background-image: url('spa-images/waxbackgroundmelt.jpeg'); opacity: 0.6; }
-  96%  { background-image: url('spa-images/waxstrips.jpeg'); opacity: 1; }
-  100% { background-image: url('spa-images/underarmwax.jpeg'); opacity: 1; }
-}
-
-/* Optional overlay for readability */
+/* =======================================================
+   BACKGROUND SLIDESHOW - SECONDARY LAYER
+   - Subtle slower movement for depth (3D parallax effect)
+======================================================= */
 body::after {
   content: '';
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.2); /* subtle dark overlay */
-  z-index: 0;
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Above primary, below content */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7); /* Darker to create depth */
+  opacity: 0.4; /* Make subtle */
+
+  /* Slower, opposing motion */
+  animation: secondaryCinematic 90s infinite ease-in-out;
+  transform-origin: center center;
+  pointer-events: none; /* Ensure clicks pass through */
 }
+
+/* =======================================================
+   KEYFRAMES - PRIMARY CINEMATIC LAYER
+   - Fades between images + slow zoom + slight pan
+======================================================= */
+@keyframes primaryCinematic {
+  0% {
+    background-image: url('spa-images/underarmwax.jpeg');
+    transform: scale(1) translate(0%, 0%);
+    opacity: 1;
+  }
+  20% {
+    background-image: url('spa-images/waxbeans.jpeg');
+    transform: scale(1.05) translate(-2%, 1%);
+    opacity: 1;
+  }
+  40% {
+    background-image: url('spa-images/legwax.jpeg');
+    transform: scale(1.08) translate(1%, -2%);
+    opacity: 1;
+  }
+  60% {
+    background-image: url('spa-images/waxingservices.jpeg');
+    transform: scale(1.1) translate(-1%, 2%);
+    opacity: 1;
+  }
+  80% {
+    background-image: url('spa-images/waxbackgroundmelt.jpeg');
+    transform: scale(1.05) translate(2%, -1%);
+    opacity: 1;
+  }
+  100% {
+    background-image: url('spa-images/waxstrips.jpeg');
+    transform: scale(1) translate(0%, 0%);
+    opacity: 1;
+  }
+}
+
+/* =======================================================
+   KEYFRAMES - SECONDARY CINEMATIC LAYER
+   - Slower zoom + opposite floating motion for depth
+======================================================= */
+@keyframes secondaryCinematic {
+  0% {
+    background-image: url('spa-images/spabackground2.jpeg');
+    transform: scale(1.02) translate(1%, -1%);
+  }
+  25% {
+    background-image: url('spa-images/spaherobackground2.jpeg');
+    transform: scale(1.05) translate(-1%, 2%);
+  }
+  50% {
+    background-image: url('spa-images/membership1.jpeg');
+    transform: scale(1.08) translate(2%, -2%);
+  }
+  75% {
+    background-image: url('spa-images/membership3.jpeg');
+    transform: scale(1.05) translate(-2%, 1%);
+  }
+  100% {
+    background-image: url('spa-images/spabackground2.jpeg');
+    transform: scale(1.02) translate(1%, -1%);
+  }
+}
+
 
   
   /* =======================================================
